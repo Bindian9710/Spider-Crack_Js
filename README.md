@@ -13,6 +13,9 @@ JS解密案例
 ├─ openlaw                           // -----openlaw-----
 │   ├── openlaw_login.js             // 密码解密demo
 │   ├── openlaw_login.py             // Python版demo
+├─ dianping                           // -----大众点评-----
+│   ├── dianping_login.js             // 密码解密demo
+│   ├── dianping_login.py             // Python版demo
 ├─ 37wan                             // -----37玩-----
 │   ├── sqwan_login.js               // 密码解密demo
 ├─ 10086                             // -----10086-----
@@ -36,6 +39,8 @@ JS解密案例
 │   ├── ytd_login.js                 // 密码解密demo
 ├─ chuchujie                         // -----楚楚街-----
 │   ├── chuchujie_login.js           // 密码解密demo
-└─ autoHome                          // -----汽车之家-----
-    └── autoHome_login.js            // 密码解密demo
+├─ autoHome                          // -----汽车之家-----
+│   └── autoHome_login.js            // 密码解密demo
+└─ mgtv                              // -----芒果tv-----
+    └── gmtv_login.js                // 密码解密demo
 ```
