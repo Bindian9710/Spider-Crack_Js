@@ -2813,4 +2813,4 @@ function encrypt(pwd){
     var encrypted = encrypt.encrypt(pwd);
     return encrypted;
 }
-console.log(encrypt('a1231231'))
+console.log(encrypt('a123123123'))
