@@ -1,4 +1,4 @@
-window=this;navigator = {};
+window=global;navigator = {};
 !function(t, e) {
     "function" == typeof define && define.amd ? define(["exports"], e) : e("object" == typeof exports && "string" != typeof exports.nodeName ? module.exports : t)
 }(this, function(t) {
@@ -2802,7 +2802,7 @@ window=this;navigator = {};
         }
         ,
         ze.version = "2.3.1",
-        t.JSEncrypt = ze
+        JSEncrypt = ze
 });
 
 
@@ -2813,3 +2813,4 @@ function encrypt(pwd){
     var encrypted = encrypt.encrypt(pwd);
     return encrypted;
 }
+console.log(encrypt('a1231231'))
