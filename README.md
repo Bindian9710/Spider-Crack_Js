@@ -15,7 +15,10 @@ JS解密案例
 │   ├── openlaw_login.py             // Python版demo
 ├─ dianping                          // -----大众点评-----
 │   ├── dianping_pwd.js              // 密码解密demo
-│   ├── dianping_token.py            // Token解密demo
+│   ├── dianping_token.js            // Token解密demo
+├─ steam                             // -----steam-----
+│   ├── steam_pwd.js                 // 密码解密demo
+│   ├── steam_login.py               // Python版demo
 ├─ 37wan                             // -----37玩-----
 │   ├── sqwan_login.js               // 密码解密demo
 ├─ 10086                             // -----10086-----
