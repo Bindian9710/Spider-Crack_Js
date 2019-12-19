@@ -53,4 +53,4 @@ JS解密案例
 ```
 
 欢迎关注公众号
-![Image text](https://raw.githubusercontent.com/Bindian9710/Img/master/wecath_Official/Wechat_Code_subsize.png?token=AGKFSPHAI7YCTUT4EK4EDUS57OIGI)
+![Image text](https://raw.githubusercontent.com/Bindian9710/Img/master/wecath_Official/Wechat_Code_subsize.png)
