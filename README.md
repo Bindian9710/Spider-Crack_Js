@@ -6,6 +6,10 @@
 | Email | nnlcccc@outlook.com |
 | Introduce | 登陆js解密 |
 
+## 代码教程
+
+- [x] [【OpenLaw】登陆加密参数分析](https://mp.weixin.qq.com/s/J7HPTACLbIvjvGierXuhhA)
+
 
 ## JS解密案例目录
 ```
@@ -47,3 +51,6 @@ JS解密案例
 └─ mgtv                              // -----芒果tv-----
     └── gmtv_login.js                // 密码解密demo
 ```
+
+欢迎关注公众号
+![Image text](https://raw.githubusercontent.com/Bindian9710/Img/master/wecath_Official/Wechat_Code_subsize.png)
