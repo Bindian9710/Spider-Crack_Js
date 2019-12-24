@@ -9,7 +9,7 @@
 ## 代码教程
 
 - [x] [【OpenLaw】登陆参数加密过程分析](https://mp.weixin.qq.com/s/J7HPTACLbIvjvGierXuhhA)
-- [x] [【中华英才网】登陆参数加密过程分析](https://blog.csdn.net/weixin_42895728/article/details/103679867)
+- [x] [【中华英才网】登陆参数加密过程分析](https://mp.weixin.qq.com/s/e6wjjAVuhqqR-LEpKtIxyQ)
 
 
 ## JS解密案例目录
