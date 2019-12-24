@@ -1,14 +1,15 @@
 # Spider-Crack_Login_Js
 🎯JS登陆解密，会慢慢更新
 
-| Author  | 熊猫 |
+| Author  | 汪唔 |
 | --- | --- |
 | Email | nnlcccc@outlook.com |
 | Introduce | 登陆js解密 |
 
 ## 代码教程
 
-- [x] [【OpenLaw】登陆加密参数分析](https://mp.weixin.qq.com/s/J7HPTACLbIvjvGierXuhhA)
+- [x] [【OpenLaw】登陆参数加密过程分析](https://mp.weixin.qq.com/s/J7HPTACLbIvjvGierXuhhA)
+- [x] [【中华英才网】登陆参数加密过程分析](https://blog.csdn.net/weixin_42895728/article/details/103679867)
 
 
 ## JS解密案例目录
@@ -23,6 +24,9 @@ JS解密案例
 ├─ steam                             // -----steam-----
 │   ├── steam_pwd.js                 // 密码解密demo
 │   ├── steam_login.py               // Python版demo
+├─ chinahr                           // -----chinahr-----
+│   ├── chinahr_login.js             // 密码解密demo
+│   ├── chinahr_login.py             // Python版demo
 ├─ 37wan                             // -----37玩-----
 │   ├── sqwan_login.js               // 密码解密demo
 ├─ 10086                             // -----10086-----
@@ -53,4 +57,4 @@ JS解密案例
 ```
 
 欢迎关注公众号
-![Image text](https://raw.githubusercontent.com/Bindian9710/Img/master/wecath_Official/Wechat_Code_subsize.png)
+![汪唔学python](https://raw.githubusercontent.com/Bindian9710/Img/master/wecath_Official/Wechat_Code_subsize.png)
