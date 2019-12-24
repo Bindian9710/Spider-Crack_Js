@@ -12,8 +12,8 @@ import execjs
 class ChinahrLogin:
 
     def __init__(self):
-        self.username = '18574651067'
-        self.password = 'bindian9710'
+        self.username = 'username'
+        self.password = 'password'
         self.index_url = 'https://passport.58.com/'
         self.login_url = 'https://passport.58.com/login/pc/dologin?'
         self.token_path = '/login/init?callback=jQuery111305697932980020528_1577152074902&_=1577152074906'
