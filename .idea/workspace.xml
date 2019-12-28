@@ -2,8 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c73a6d49-db01-44a6-b1fa-a512f3aeeced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/openlaw/openlaw_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/openlaw/openlaw_login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/steam/steam_pwd.js" beforeDir="false" afterPath="$PROJECT_DIR$/steam/steam_pwd.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/10086/yinyeting_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/189/189_pwd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/autoHome/autoHome_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chinahr/chinahr_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chinahr/chinahr_login.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/chuchujie/chuchujie_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/danle/danle_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/danle/login.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dianping/dianping_pwd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dianping/dianping_token.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fangtianxia/fantianxia.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/huijinsuo/huijinsuo_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mgtv/mgtv_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migu_video/migu_video.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdd/pdd_pwd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pdd/riskSign.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qimingpian/crad.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qimingpian/crad_login.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sina_esf/xlesf_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sina_weibo/weibo_login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ytd/ytd_login.js" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -21,6 +40,28 @@
     <SUITE FILE_PATH="coverage/Spider_Crack_Login_Js$chinahr_login.coverage" NAME="chinahr_login Coverage Results" MODIFIED="1577156407445" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/chinahr" />
     <SUITE FILE_PATH="coverage/Spider_Crack_Login_Js$MYFREEMP3.coverage" NAME="MYFREEMP3 Coverage Results" MODIFIED="1577351759926" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/MYFREEMP3" />
   </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/企名片/crad_login.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/咪咕视频/migu_video.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="723">
+              <caret line="490" column="120" selection-start-line="490" selection-start-column="120" selection-end-line="490" selection-end-column="120" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -32,6 +73,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/咪咕视频/migu_video.js" />
+      </list>
+    </option>
   </component>
   <component name="JsFlowSettings">
     <service-enabled>true</service-enabled>
@@ -50,7 +98,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Spider-Crack_Login_Js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spider-Crack_Login_Js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Spider-Crack_Login_Js" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Spider-Crack_Login_Js" type="462c0819:PsiDirectoryNode" />
+              <item name="咪咕视频" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope" />
     </panes>
   </component>
@@ -170,18 +233,18 @@
       <workItem from="1577345480717" duration="4246000" />
       <workItem from="1577351525844" duration="874000" />
       <workItem from="1577496384867" duration="431000" />
-      <workItem from="1577497398692" duration="598000" />
+      <workItem from="1577497398692" duration="1291000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1029000" />
+    <option name="totallyTimeSpent" value="1722000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25266525" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21055438" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -280,5 +343,31 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/openlaw/openlaw_login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/steam/steam_login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-261" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/企名片/crad_login.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/咪咕视频/migu_video.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="723">
+          <caret line="490" column="120" selection-start-line="490" selection-start-column="120" selection-end-line="490" selection-end-column="120" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>
