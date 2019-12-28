@@ -1346,13 +1346,9 @@ var RSA = {
 	}
 };
 
-
-
-function getPwd(password) {
-results = {"success":true,"publickey_mod":"d9fc0668e2efdfd37a350e96a877281ebdd75598a1737a7e5e6446ed7c7d40d074f0fadd83a7a1ccb87032c07b2e92daa74cb663bdf8cab3f9396e57766ebf329110c83ba6e2d430a1e822e9ebfd79ef16afabf090d11e6929af545bda35dc9cc84867b8ff124c8444cd5c1f1f270325fb508c577ba9d53f44a232ce14760859e8b2fd07332aeffc09df70caf860476fcc9cb941f70bbce98ad34b08cd5a0903a0b5dbbb7c522a78ee736f73a934f5e3e66bd30e15a051ac3f6660b9ded7f8c9ea83042591aa9ac7da069a1702248f79bae69516b3f5542b9f66773c4ea972b85c1be8d4559711c27ec2c542906eb446cf207a990b665b4761b4a1dd27a7696f","publickey_exp":"010001","timestamp":"28836750000","token_gid":"15adc23071b5983e"}
+function getPwd(password,results) {
     var pubKey = RSA.getPublicKey(results.publickey_mod, results.publickey_exp);
     password = password.replace(/[^\x00-\x7F]/g, '');
     var encryptedPassword = RSA.encrypt(password, pubKey);
 return encryptedPassword
 }
-console.log(getPwd('a123123123'))
