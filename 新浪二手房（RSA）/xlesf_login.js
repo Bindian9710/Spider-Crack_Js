@@ -270,4 +270,4 @@ function getPwd(pwd) {
     return encryptedString(t, pwd);
 }
 
-console.log(getPwd('a123123'));
+console.log(getPwd('a123123'))
