@@ -1124,5 +1124,5 @@ function() {
 var CryptoJS = r;
 encryptByDES = function(e) {
     return CryptoJS.MD5(e + "TuD00Iqz4ge7gzIe2rmjSAFFKtaIBmnr8S").toString()
-}
+};
 console.log(encryptByDES('a123123123'))
