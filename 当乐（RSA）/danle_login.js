@@ -1301,4 +1301,3 @@ var getPwd = function(arg) {
     return encryptedString(key, arg);
 };
 
-console.log(getPwd('a123123'))
