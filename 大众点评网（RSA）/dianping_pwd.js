@@ -2693,7 +2693,7 @@ window=this;navigator = {};
         }
 )();
 function getPwd(password, uuid) {
-    var str = '["' + password + '", "' + uuid + '"]';
+    var str = '["' + password + '", "' + uuid + '"]'; // uuid值为滑块验证码结果值
     var n = new JSEncrypt;
     n.setPublicKey("MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFsAP5FbR5YxBOwnMhubNio4shx7HBQVteoz0BxqD1DoLno070pAQeZdTpBax3Ai9dVxDXs5U04IsF863y0il+AtMWyvlIuNcOpirCcUg3dodHC6XCHsedvWyHG7aNeD5akKt0ZpiPavuah4jBbFTc0B6ijsHW+tlvNbJz18AOMwIDAQAB");
     return n.encrypt(str)
