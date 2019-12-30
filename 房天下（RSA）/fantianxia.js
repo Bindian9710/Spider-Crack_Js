@@ -437,4 +437,4 @@ function getPwd(password) {
     return encryptedString(key_to_encode, password)
 }
 
-console.log(getPwd('111111111'))
+console.log(getPwd('111111111'));
