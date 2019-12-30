@@ -567,9 +567,9 @@ window = this;
 function encryptString(str, e, m) {
     var key = RSAUtils.getKeyPair(e, '', m);
     return RSAUtils.encryptedString(key, str)
-}
-var getPwd = function(passwordInput,rsaModulus,rsaExponent) {
+};
+var getPwd = function(password,rsaModulus,rsaExponent) {
     var s = 1411093327735 - (new Date).getTime();
     timesign = (new Date).getTime() + s;
-    return encryptString(timesign + encodeURIComponent(passwordInput), rsaExponent, rsaModulus)
-}
+    return encryptString(timesign + encodeURIComponent(password), rsaExponent, rsaModulus)
+};
