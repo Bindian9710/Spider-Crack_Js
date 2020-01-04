@@ -11,9 +11,10 @@ import execjs
 
 class WeiboLogin:
 
-    def __init__(self):
-        self.username = ''
-        self.password = ''
+    def __init__(self,username,password):
+        self.session = requests.session()
+        self.username = username
+        self.password = password
         self.prelogin_url = 'https://login.sina.com.cn/sso/prelogin.php'
         self.login_url = 'https://login.sina.com.cn/sso/login.php'
         with open('weibo_login.js','r',encoding='utf-8') as f:
@@ -30,12 +31,13 @@ class WeiboLogin:
             'client': 'ssologin.js(v1.4.19)',
             '_': '1578127327125',
         }
-        prelogin_resp = requests.get(self.prelogin_url,params=params)
+        prelogin_resp = self.session.get(self.prelogin_url,params=params)
         result = re.search(r'sinaSSOController.preloginCallBack\((.*?)\)',prelogin_resp.text).group(1)
         self.result_json = json.loads(result)
         # print(result_json)
 
     def login(self):
+        self.getPreloginInfo()
         data = {
             'entry': 'weibo',
             'gateway': '1',
@@ -58,16 +60,18 @@ class WeiboLogin:
             'url': 'https://weibo.com/ajaxlogin.php?framelogin=1&callback=parent.sinaSSOController.feedBackUrlCallBack',
             'returntype': 'META',
         }
-        resp = requests.post(self.login_url,data=data)
+        resp = self.session.post(self.login_url,data=data)
         resp.encoding = resp.apparent_encoding
+
+        location = re.search(r'replace\("(.*?)"\);',resp.text).group(1)
+        resp = self.session.get(location)
+
+        location = re.search(r'replace\(\'(.*?)\'\);', resp.text).group(1)
+        resp = self.session.get(location)
+        resp = self.session.get('https://weibo.com/')
         print(resp.text)
-        # location = re.search(r'replace\("(.*?)"\);',resp.text).group(1)
-        # print(location)
-        # resp = requests.get(location)
-        # print(resp.text)
-        # print(resp)
+        print(resp)
 
 if __name__ == '__main__':
-    w = WeiboLogin()
-    w.getPreloginInfo()
+    w = WeiboLogin(username='123',password='123')
     w.login()
