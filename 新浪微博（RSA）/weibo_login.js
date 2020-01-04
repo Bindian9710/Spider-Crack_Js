@@ -983,13 +983,22 @@ function getSu(user) {
 }
 
 function getSp(me,pwd) {
-    console.log(me);
     var f = new sinaSSOEncoder.RSAKey;
     f.setPublic(me.pubkey, "10001");
     b = f.encrypt([me.servertime, me.nonce].join("\t") + "\n" + pwd);
     return b
 }
 
-me = {"retcode":0,"servertime":1576468626,"pcid":"gz-9ec9fde5f30e43942e3314d3cd2224c3906a","nonce":"7O3E2N","pubkey":"EB2A38568661887FA180BDDB5CABD5F21C7BFD59C090CB2D245A87AC253062882729293E5506350508E7F9AA3BB77F4333231490F915F6D63C55FE2F08A49B353F444AD3993CACC02DB784ABBB8E42A9B1BBFFFB38BE18D78E87A0E41B9B8F73A928EE0CCEE1F6739884B9777E4FE9E88A1BBE495927AC4A799B3181D6442443","rsakv":"1330428213","is_openlock":0,"lm":1,"smsurl":"https:\/\/login.sina.com.cn\/sso\/msglogin?entry=weibo&mobile=13111111111&s=e10b0e0fa8c419fd71730003c0ff8c27","showpin":0,"exectime":9}
-
-console.log(getSp(me,'a123123'));
+me = {
+    "retcode": 0,
+    "servertime": 1578107379,
+    "pcid": "gz-538f224d681423a8a8ac26a9763fde4215ad",
+    "nonce": "4OZUT5",
+    "pubkey": "EB2A38568661887FA180BDDB5CABD5F21C7BFD59C090CB2D245A87AC253062882729293E5506350508E7F9AA3BB77F4333231490F915F6D63C55FE2F08A49B353F444AD3993CACC02DB784ABBB8E42A9B1BBFFFB38BE18D78E87A0E41B9B8F73A928EE0CCEE1F6739884B9777E4FE9E88A1BBE495927AC4A799B3181D6442443",
+    "rsakv": "1330428213",
+    "is_openlock": 0,
+    "lm": 1,
+    "smsurl": "https:\/\/login.sina.com.cn\/sso\/msglogin?entry=weibo&mobile=13111111111&s=bc472201fc9c232ce58248ccb94990f9",
+    "showpin": 0,
+    "exectime": 7
+}
