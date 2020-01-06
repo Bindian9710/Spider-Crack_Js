@@ -11,6 +11,7 @@
 - [x] [【OpenLaw】登陆参数加密过程分析](https://mp.weixin.qq.com/s/J7HPTACLbIvjvGierXuhhA)
 - [x] [【中华英才网】登陆参数加密过程分析](https://mp.weixin.qq.com/s/e6wjjAVuhqqR-LEpKtIxyQ)
 - [x] [【大众点评网】登陆参数过程分析](https://mp.weixin.qq.com/s/XPvj-8ph1l0RvFUxpgVQrA)
+- [x] [【新浪微博】登陆参数过程手把手分析](https://mp.weixin.qq.com/s/NWtsJDNI9MMY_GAkHuqCPw)
 
 
 ## JS解密案例目录
@@ -50,6 +51,7 @@ JS解密案例
 │   ├── xlesf_login.js               // JavaScript解密demo
 ├─ 新浪微博 
 │   ├── weibo_login.js               // JavaScript解密demo
+│   ├── weibo_login.py               // Python版demo
 ├─ 易通贷
 │   ├── ytd_login.js                 // JavaScript解密demo
 ├─ 楚楚街
