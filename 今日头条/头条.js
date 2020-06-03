@@ -1,224 +1,670 @@
-function s(t, e) {
-    var i = (65535 & t) + (65535 & e)
-        , n = (t >> 16) + (e >> 16) + (i >> 16);
-    return n << 16 | 65535 & i
+var window = global;
+window.location = {
+    origin: "https://www.toutiao.com",
+    protocol: "https:",
+    host: "www.toutiao.com",
+    hostname: "www.toutiao.com",
+    port: "",
+    pathname: "/",
+    search: "",
+    hash: "",
+    href: "https://www.toutiao.com/",
 }
-function o(t, e) {
-    return t << e | t >>> 32 - e
-}
-function r(t, e, i, n, a, r) {
-    return s(o(s(s(e, t), s(n, r)), a), i)
-}
-function l(t, e, i, n, a, s, o) {
-    return r(e & i | ~e & n, t, e, a, s, o)
-}
-function u(t, e, i, n, a, s, o) {
-    return r(e & n | i & ~n, t, e, a, s, o)
-}
-function c(t, e, i, n, a, s, o) {
-    return r(e ^ i ^ n, t, e, a, s, o)
-}
-function d(t, e, i, n, a, s, o) {
-    return r(i ^ (e | ~n), t, e, a, s, o)
-}
-function h(t, e) {
-    t[e >> 5] |= 128 << e % 32,
-        t[(e + 64 >>> 9 << 4) + 14] = e;
-    var i, n, a, o, r, h = 1732584193, m = -271733879, _ = -1732584194, p = 271733878;
-    for (i = 0; i < t.length; i += 16)
-        n = h,
-            a = m,
-            o = _,
-            r = p,
-            h = l(h, m, _, p, t[i], 7, -680876936),
-            p = l(p, h, m, _, t[i + 1], 12, -389564586),
-            _ = l(_, p, h, m, t[i + 2], 17, 606105819),
-            m = l(m, _, p, h, t[i + 3], 22, -1044525330),
-            h = l(h, m, _, p, t[i + 4], 7, -176418897),
-            p = l(p, h, m, _, t[i + 5], 12, 1200080426),
-            _ = l(_, p, h, m, t[i + 6], 17, -1473231341),
-            m = l(m, _, p, h, t[i + 7], 22, -45705983),
-            h = l(h, m, _, p, t[i + 8], 7, 1770035416),
-            p = l(p, h, m, _, t[i + 9], 12, -1958414417),
-            _ = l(_, p, h, m, t[i + 10], 17, -42063),
-            m = l(m, _, p, h, t[i + 11], 22, -1990404162),
-            h = l(h, m, _, p, t[i + 12], 7, 1804603682),
-            p = l(p, h, m, _, t[i + 13], 12, -40341101),
-            _ = l(_, p, h, m, t[i + 14], 17, -1502002290),
-            m = l(m, _, p, h, t[i + 15], 22, 1236535329),
-            h = u(h, m, _, p, t[i + 1], 5, -165796510),
-            p = u(p, h, m, _, t[i + 6], 9, -1069501632),
-            _ = u(_, p, h, m, t[i + 11], 14, 643717713),
-            m = u(m, _, p, h, t[i], 20, -373897302),
-            h = u(h, m, _, p, t[i + 5], 5, -701558691),
-            p = u(p, h, m, _, t[i + 10], 9, 38016083),
-            _ = u(_, p, h, m, t[i + 15], 14, -660478335),
-            m = u(m, _, p, h, t[i + 4], 20, -405537848),
-            h = u(h, m, _, p, t[i + 9], 5, 568446438),
-            p = u(p, h, m, _, t[i + 14], 9, -1019803690),
-            _ = u(_, p, h, m, t[i + 3], 14, -187363961),
-            m = u(m, _, p, h, t[i + 8], 20, 1163531501),
-            h = u(h, m, _, p, t[i + 13], 5, -1444681467),
-            p = u(p, h, m, _, t[i + 2], 9, -51403784),
-            _ = u(_, p, h, m, t[i + 7], 14, 1735328473),
-            m = u(m, _, p, h, t[i + 12], 20, -1926607734),
-            h = c(h, m, _, p, t[i + 5], 4, -378558),
-            p = c(p, h, m, _, t[i + 8], 11, -2022574463),
-            _ = c(_, p, h, m, t[i + 11], 16, 1839030562),
-            m = c(m, _, p, h, t[i + 14], 23, -35309556),
-            h = c(h, m, _, p, t[i + 1], 4, -1530992060),
-            p = c(p, h, m, _, t[i + 4], 11, 1272893353),
-            _ = c(_, p, h, m, t[i + 7], 16, -155497632),
-            m = c(m, _, p, h, t[i + 10], 23, -1094730640),
-            h = c(h, m, _, p, t[i + 13], 4, 681279174),
-            p = c(p, h, m, _, t[i], 11, -358537222),
-            _ = c(_, p, h, m, t[i + 3], 16, -722521979),
-            m = c(m, _, p, h, t[i + 6], 23, 76029189),
-            h = c(h, m, _, p, t[i + 9], 4, -640364487),
-            p = c(p, h, m, _, t[i + 12], 11, -421815835),
-            _ = c(_, p, h, m, t[i + 15], 16, 530742520),
-            m = c(m, _, p, h, t[i + 2], 23, -995338651),
-            h = d(h, m, _, p, t[i], 6, -198630844),
-            p = d(p, h, m, _, t[i + 7], 10, 1126891415),
-            _ = d(_, p, h, m, t[i + 14], 15, -1416354905),
-            m = d(m, _, p, h, t[i + 5], 21, -57434055),
-            h = d(h, m, _, p, t[i + 12], 6, 1700485571),
-            p = d(p, h, m, _, t[i + 3], 10, -1894986606),
-            _ = d(_, p, h, m, t[i + 10], 15, -1051523),
-            m = d(m, _, p, h, t[i + 1], 21, -2054922799),
-            h = d(h, m, _, p, t[i + 8], 6, 1873313359),
-            p = d(p, h, m, _, t[i + 15], 10, -30611744),
-            _ = d(_, p, h, m, t[i + 6], 15, -1560198380),
-            m = d(m, _, p, h, t[i + 13], 21, 1309151649),
-            h = d(h, m, _, p, t[i + 4], 6, -145523070),
-            p = d(p, h, m, _, t[i + 11], 10, -1120210379),
-            _ = d(_, p, h, m, t[i + 2], 15, 718787259),
-            m = d(m, _, p, h, t[i + 9], 21, -343485551),
-            h = s(h, n),
-            m = s(m, a),
-            _ = s(_, o),
-            p = s(p, r);
-    return [h, m, _, p]
-}
-function m(t) {
-    var e, i = "";
-    for (e = 0; e < 32 * t.length; e += 8)
-        i += String.fromCharCode(t[e >> 5] >>> e % 32 & 255);
-    return i
-}
-function _(t) {
-    var e, i = [];
-    for (i[(t.length >> 2) - 1] = void 0,
-             e = 0; e < i.length; e += 1)
-        i[e] = 0;
-    for (e = 0; e < 8 * t.length; e += 8)
-        i[e >> 5] |= (255 & t.charCodeAt(e / 8)) << e % 32;
-    return i
-}
-function p(t) {
-    return m(h(_(t), 8 * t.length))
-}
-function f(t, e) {
-    var i, n, a = _(t), s = [], o = [];
-    for (s[15] = o[15] = void 0,
-         a.length > 16 && (a = h(a, 8 * t.length)),
-             i = 0; i < 16; i += 1)
-        s[i] = 909522486 ^ a[i],
-            o[i] = 1549556828 ^ a[i];
-    return n = h(s.concat(_(e)), 512 + 8 * e.length),
-        m(h(o.concat(n), 640))
-}
-function g(t) {
-    var e, i, n = "0123456789abcdef", a = "";
-    for (i = 0; i < t.length; i += 1)
-        e = t.charCodeAt(i),
-            a += n.charAt(e >>> 4 & 15) + n.charAt(15 & e);
-    return a
-}
-function v(t) {
-    return unescape(encodeURIComponent(t))
-}
-function w(t) {
-    return p(v(t))
-}
-function y(t) {
-    return g(w(t))
-}
-function b(t, e) {
-    return f(v(t), v(e))
-}
-function x(t, e) {
-    return g(b(t, e))
-}
-function k(t, e, i) {
-    return e ? i ? b(e, t) : x(e, t) : i ? w(t) : y(t)
+window.navigator = {
+    userAgent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Safari/537.36",
 }
 
-function get_AS_CP() {
-    var t = Math.floor((new Date).getTime() / 1e3)
-        , e = t.toString(16).toUpperCase()
-        , i = k(t).toString().toUpperCase();
-    if (8 != e.length)
+function get_as_cp(){
+    function s(t, e) {
+        var i = (65535 & t) + (65535 & e)
+            , n = (t >> 16) + (e >> 16) + (i >> 16);
+        return n << 16 | 65535 & i
+    }
+    function o(t, e) {
+        return t << e | t >>> 32 - e
+    }
+    function r(t, e, i, n, a, r) {
+        return s(o(s(s(e, t), s(n, r)), a), i)
+    }
+    function l(t, e, i, n, a, s, o) {
+        return r(e & i | ~e & n, t, e, a, s, o)
+    }
+    function u(t, e, i, n, a, s, o) {
+        return r(e & n | i & ~n, t, e, a, s, o)
+    }
+    function c(t, e, i, n, a, s, o) {
+        return r(e ^ i ^ n, t, e, a, s, o)
+    }
+    function d(t, e, i, n, a, s, o) {
+        return r(i ^ (e | ~n), t, e, a, s, o)
+    }
+    function h(t, e) {
+        t[e >> 5] |= 128 << e % 32,
+            t[(e + 64 >>> 9 << 4) + 14] = e;
+        var i, n, a, o, r, h = 1732584193, m = -271733879, _ = -1732584194, p = 271733878;
+        for (i = 0; i < t.length; i += 16)
+            n = h,
+                a = m,
+                o = _,
+                r = p,
+                h = l(h, m, _, p, t[i], 7, -680876936),
+                p = l(p, h, m, _, t[i + 1], 12, -389564586),
+                _ = l(_, p, h, m, t[i + 2], 17, 606105819),
+                m = l(m, _, p, h, t[i + 3], 22, -1044525330),
+                h = l(h, m, _, p, t[i + 4], 7, -176418897),
+                p = l(p, h, m, _, t[i + 5], 12, 1200080426),
+                _ = l(_, p, h, m, t[i + 6], 17, -1473231341),
+                m = l(m, _, p, h, t[i + 7], 22, -45705983),
+                h = l(h, m, _, p, t[i + 8], 7, 1770035416),
+                p = l(p, h, m, _, t[i + 9], 12, -1958414417),
+                _ = l(_, p, h, m, t[i + 10], 17, -42063),
+                m = l(m, _, p, h, t[i + 11], 22, -1990404162),
+                h = l(h, m, _, p, t[i + 12], 7, 1804603682),
+                p = l(p, h, m, _, t[i + 13], 12, -40341101),
+                _ = l(_, p, h, m, t[i + 14], 17, -1502002290),
+                m = l(m, _, p, h, t[i + 15], 22, 1236535329),
+                h = u(h, m, _, p, t[i + 1], 5, -165796510),
+                p = u(p, h, m, _, t[i + 6], 9, -1069501632),
+                _ = u(_, p, h, m, t[i + 11], 14, 643717713),
+                m = u(m, _, p, h, t[i], 20, -373897302),
+                h = u(h, m, _, p, t[i + 5], 5, -701558691),
+                p = u(p, h, m, _, t[i + 10], 9, 38016083),
+                _ = u(_, p, h, m, t[i + 15], 14, -660478335),
+                m = u(m, _, p, h, t[i + 4], 20, -405537848),
+                h = u(h, m, _, p, t[i + 9], 5, 568446438),
+                p = u(p, h, m, _, t[i + 14], 9, -1019803690),
+                _ = u(_, p, h, m, t[i + 3], 14, -187363961),
+                m = u(m, _, p, h, t[i + 8], 20, 1163531501),
+                h = u(h, m, _, p, t[i + 13], 5, -1444681467),
+                p = u(p, h, m, _, t[i + 2], 9, -51403784),
+                _ = u(_, p, h, m, t[i + 7], 14, 1735328473),
+                m = u(m, _, p, h, t[i + 12], 20, -1926607734),
+                h = c(h, m, _, p, t[i + 5], 4, -378558),
+                p = c(p, h, m, _, t[i + 8], 11, -2022574463),
+                _ = c(_, p, h, m, t[i + 11], 16, 1839030562),
+                m = c(m, _, p, h, t[i + 14], 23, -35309556),
+                h = c(h, m, _, p, t[i + 1], 4, -1530992060),
+                p = c(p, h, m, _, t[i + 4], 11, 1272893353),
+                _ = c(_, p, h, m, t[i + 7], 16, -155497632),
+                m = c(m, _, p, h, t[i + 10], 23, -1094730640),
+                h = c(h, m, _, p, t[i + 13], 4, 681279174),
+                p = c(p, h, m, _, t[i], 11, -358537222),
+                _ = c(_, p, h, m, t[i + 3], 16, -722521979),
+                m = c(m, _, p, h, t[i + 6], 23, 76029189),
+                h = c(h, m, _, p, t[i + 9], 4, -640364487),
+                p = c(p, h, m, _, t[i + 12], 11, -421815835),
+                _ = c(_, p, h, m, t[i + 15], 16, 530742520),
+                m = c(m, _, p, h, t[i + 2], 23, -995338651),
+                h = d(h, m, _, p, t[i], 6, -198630844),
+                p = d(p, h, m, _, t[i + 7], 10, 1126891415),
+                _ = d(_, p, h, m, t[i + 14], 15, -1416354905),
+                m = d(m, _, p, h, t[i + 5], 21, -57434055),
+                h = d(h, m, _, p, t[i + 12], 6, 1700485571),
+                p = d(p, h, m, _, t[i + 3], 10, -1894986606),
+                _ = d(_, p, h, m, t[i + 10], 15, -1051523),
+                m = d(m, _, p, h, t[i + 1], 21, -2054922799),
+                h = d(h, m, _, p, t[i + 8], 6, 1873313359),
+                p = d(p, h, m, _, t[i + 15], 10, -30611744),
+                _ = d(_, p, h, m, t[i + 6], 15, -1560198380),
+                m = d(m, _, p, h, t[i + 13], 21, 1309151649),
+                h = d(h, m, _, p, t[i + 4], 6, -145523070),
+                p = d(p, h, m, _, t[i + 11], 10, -1120210379),
+                _ = d(_, p, h, m, t[i + 2], 15, 718787259),
+                m = d(m, _, p, h, t[i + 9], 21, -343485551),
+                h = s(h, n),
+                m = s(m, a),
+                _ = s(_, o),
+                p = s(p, r);
+        return [h, m, _, p]
+    }
+    function m(t) {
+        var e, i = "";
+        for (e = 0; e < 32 * t.length; e += 8)
+            i += String.fromCharCode(t[e >> 5] >>> e % 32 & 255);
+        return i
+    }
+    function _(t) {
+        var e, i = [];
+        for (i[(t.length >> 2) - 1] = void 0,
+                 e = 0; e < i.length; e += 1)
+            i[e] = 0;
+        for (e = 0; e < 8 * t.length; e += 8)
+            i[e >> 5] |= (255 & t.charCodeAt(e / 8)) << e % 32;
+        return i
+    }
+    function p(t) {
+        return m(h(_(t), 8 * t.length))
+    }
+    function g(t) {
+        var e, i, n = "0123456789abcdef", a = "";
+        for (i = 0; i < t.length; i += 1)
+            e = t.charCodeAt(i),
+                a += n.charAt(e >>> 4 & 15) + n.charAt(15 & e);
+        return a
+    }
+    function v(t) {
+        return unescape(encodeURIComponent(t))
+    }
+    function w(t) {
+        return p(v(t))
+    }
+    function y(t) {
+        return g(w(t))
+    }
+    function C(t, e, i) {
+        return e ? i ? b(e, t) : x(e, t) : i ? w(t) : y(t)
+    }
+
+    function a() {
+        var t = Math.floor((new Date).getTime() / 1e3)
+            , e = t.toString(16).toUpperCase()
+            , i = C(t).toString().toUpperCase();
+        if (8 != e.length)
+            return {
+                as: "479BB4B7254C150",
+                cp: "7E0AC8874BB0985"
+            };
+        for (var n = i.slice(0, 5), a = i.slice(-5), s = "", r = 0; r < 5; r++)
+            s += n[r] + e[r];
+        for (var l = "", u = 0; u < 5; u++)
+            l += e[u + 3] + a[u];
         return {
-            as: "479BB4B7254C150",
-            cp: "7E0AC8874BB0985"
-        };
-    for (var n = i.slice(0, 5), a = i.slice(-5), s = "", r = 0; r < 5; r++)
-        s += n[r] + e[r];
-    for (var l = "", u = 0; u < 5; u++)
-        l += e[u + 3] + a[u];
-    return {
-        as: "A1" + s + e.slice(-3),
-        cp: e.slice(0, 3) + l + "E1"
+            as: "A1" + s + e.slice(-3),
+            cp: e.slice(0, 3) + l + "E1"
+        }
     }
+    return a()
 }
+function get_signature(){
+    var _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function(f) {
+            return typeof f
+        }
+        : function(f) {
+            return f && "function" == typeof Symbol && f.constructor === Symbol && f !== Symbol.prototype ? "symbol" : typeof f
+        }
+    ;
+    TAC = function() {
+        function f(f, b, a, c, d, r) {
+            null == r && (r = this);
+            var n, i, o = {}, l = o.d = d ? d.d + 1 : 0;
+            for (o["$" + l] = o,
+                     i = 0; i < l; i++)
+                o[n = "$" + i] = d[n];
+            for (i = 0,
+                     l = o.length = c.length; i < l; i++)
+                o[i] = c[i];
+            return e(f, b, a, o, r)[1]
+        }
+        function e(r, o, l, t, v, y) {
+            function h(f) {
+                S[++A] = f
+            }
+            function k() {
+                return S[A--]
+            }
+            function m(f, e) {
+                for (var b = a, c = "", d = 0; d < f.length; d++) {
+                    var r = f.charCodeAt(d);
+                    c += String.fromCharCode(b ^ r),
+                        b = (b << 1) + d + e + 1 + (b >> 1) & 255
+                }
+                return c
+            }
+            null == v && (v = this);
+            var g, C, x, I, S = [], A = 0;
+            y && (g = y);
+            for (var w = o + 2 * l; o < w; ) {
+                var z = 13 * i(r, o) % 241;
+                if (o += 2,
+                0 == (3 & z))
+                    if (0 == (3 & (z >>= 2))) {
+                        if (0 == (z >>= 2))
+                            return [1, S[A--]];
+                        if (2 == z)
+                            oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                I = oprand[1],
+                                S[++A] = +I;
+                        else if (4 == z)
+                            g = S[A--],
+                                S[A] = S[A] * g;
+                        else if (6 == z)
+                            g = S[A--],
+                                S[A] = S[A] != g;
+                        else if (13 == z)
+                            C = S[A--],
+                                x = S[A--],
+                                (I = S[A--]).x === e ? S[++A] = f(r, I.pc, I.len, C, I.z, x) : S[++A] = I.apply(x, C);
+                        else {
+                            if (15 != z)
+                                break;
+                            oprand = n(r, o),
+                                I = oprand[1],
+                                S[A] = function(b, a) {
+                                    var c = function e() {
+                                        var b = arguments;
+                                        return f(r, e.pc, e.len, b, e.z, this)
+                                    };
+                                    return c.pc = b,
+                                        c.len = a,
+                                        c.x = e,
+                                        c.z = t,
+                                        c
+                                }(o + 6, I - 4),
+                                o += 2 * I - 2
+                        }
+                    } else if (1 == (3 & z))
+                        if (3 == (z >>= 2))
+                            g = S[--A],
+                                S[A] = g(S[A + 1]);
+                        else if (5 == z)
+                            S[A -= 1] = S[A][S[A + 1]];
+                        else if (7 == z)
+                            S[A] = --S[A];
+                        else {
+                            if (9 != z)
+                                break;
+                            g = S[A--],
+                                S[A] = typeof g
+                        }
+                    else if (2 == (3 & z))
+                        if (6 == (z >>= 2))
+                            S[A] = u(S[A]);
+                        else if (8 == z)
+                            g = S[A--],
+                                oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                S[A--][m(b[oprand[1]], oprand[1])] = g;
+                        else {
+                            if (10 != z) {
+                                if (12 == z)
+                                    throw S[A--];
+                                break
+                            }
+                            S[A] = ~S[A]
+                        }
+                    else if (0 == (z >>= 2))
+                        S[++A] = null;
+                    else if (2 == z)
+                        g = S[A--],
+                            S[A] = S[A] >= g;
+                    else if (9 == z)
+                        g = k(),
+                            C = k(),
+                            t[0] = 65599 * t[0] + t[g].charCodeAt(C) >>> 0;
+                    else if (11 == z)
+                        S[++A] = void 0;
+                    else {
+                        if (13 != z)
+                            break;
+                        g = S[A--],
+                            S[A] = S[A] && g
+                    }
+                else if (1 == (3 & z))
+                    if (0 == (3 & (z >>= 2))) {
+                        if (4 == (z >>= 2)) {
+                            oprand = n(r, o),
+                                I = oprand[1];
+                            try {
+                                if (c[d][2] = 1,
+                                1 == (g = e(r, o + 6, I - 4, t, v))[0])
+                                    return g
+                            } catch (y) {
+                                if (c[d] && c[d][1] && 1 == (g = e(r, c[d][1][0], c[d][1][1], t, v, y))[0])
+                                    return g
+                            } finally {
+                                if (c[d] && c[d][0] && 1 == (g = e(r, c[d][0][0], c[d][0][1], t, v))[0])
+                                    return g;
+                                c[d] = 0,
+                                    d--
+                            }
+                            o += 2 * I - 2
+                        } else if (6 == z)
+                            oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                I = oprand[1],
+                                S[A -= I] = p("x,y", "return new x[y](" + Array(I + 1).join(",x[++y]").substr(1) + ")")(S, A);
+                        else if (8 == z)
+                            g = S[A--],
+                                S[A] = S[A] & g;
+                        else if (10 != z)
+                            break
+                    } else if (1 == (3 & z))
+                        if (0 == (z >>= 2))
+                            S[A] = !S[A];
+                        else if (7 == z)
+                            C = S[A--],
+                                g = delete S[A--][C];
+                        else if (9 == z)
+                            oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                S[A] = S[A][m(b[oprand[1]], oprand[1])];
+                        else {
+                            if (11 != z)
+                                break;
+                            g = S[A--],
+                                S[A] = S[A] << g
+                        }
+                    else if (2 == (3 & z))
+                        if (1 == (z >>= 2))
+                            S[++A] = g;
+                        else if (3 == z)
+                            g = S[A--],
+                                S[A] = S[A] <= g;
+                        else if (10 == z)
+                            g = S[A -= 2][S[A + 1]] = S[A + 2],
+                                A--;
+                        else if (12 == z)
+                            g = S[A],
+                                S[++A] = g;
+                        else {
+                            if (14 != z)
+                                break;
+                            g = S[A--],
+                                S[A] = S[A] || g
+                        }
+                    else if (0 == (z >>= 2))
+                        S[A] = !S[A];
+                    else if (2 == z)
+                        oprand = n(r, o),
+                            o += 2 * (I = oprand[1]) - 2;
+                    else if (4 == z)
+                        g = S[A--],
+                            S[A] = S[A] / g;
+                    else if (6 == z)
+                        g = S[A--],
+                            S[A] = S[A] !== g;
+                    else {
+                        if (13 != z)
+                            break;
+                        S[++A] = v
+                    }
+                else if (2 == (3 & z))
+                    if (0 == (3 & (z >>= 2)))
+                        if (1 == (z >>= 2))
+                            g = S[A--],
+                                S[A] = S[A] > g;
+                        else if (8 == z)
+                            oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                I = oprand[1],
+                                C = A + 1,
+                                S[A -= I - 1] = I ? S.slice(A, C) : [];
+                        else if (10 == z)
+                            oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                I = oprand[1],
+                                g = S[A--],
+                                t[I] = g;
+                        else {
+                            if (12 != z)
+                                break;
+                            g = S[A--],
+                                S[A] = S[A] >> g
+                        }
+                    else if (1 == (3 & z))
+                        if (0 == (z >>= 2))
+                            S[++A] = s;
+                        else if (2 == z)
+                            g = S[A--],
+                                S[A] = S[A] + g;
+                        else if (4 == z)
+                            g = S[A--],
+                                S[A] = S[A] == g;
+                        else if (11 == z)
+                            oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                I = oprand[1],
+                                S[--A] = p("x,y", "return x " + m(b[I], I) + " y")(S[A], S[A + 1]);
+                        else {
+                            if (13 != z)
+                                break;
+                            g = S[A - 1],
+                                C = S[A],
+                                S[++A] = g,
+                                S[++A] = C
+                        }
+                    else if (2 == (3 & z))
+                        if (1 == (z >>= 2))
+                            oprand = n(r, o),
+                                o += 2 * oprand[0],
+                                S[++A] = m(b[oprand[1]], oprand[1]);
+                        else if (3 == z)
+                            S[A--] ? o += 6 : (oprand = n(r, o),
+                                o += 2 * (I = oprand[1]) - 2);
+                        else if (5 == z)
+                            g = S[A--],
+                                S[A] = S[A] % g;
+                        else if (7 == z)
+                            g = S[A--],
+                                S[A] = S[A]instanceof g;
+                        else {
+                            if (14 != z)
+                                break;
+                            S[++A] = !1
+                        }
+                    else if (4 == (z >>= 2))
+                        oprand = n(r, o),
+                            I = oprand[1],
+                            c[d][0] && !c[d][2] ? c[d][1] = [o + 6, I - 4] : c[d++] = [0, [o + 6, I - 4], 0],
+                            o += 2 * I - 2;
+                    else if (6 == z)
+                        oprand = n(r, o),
+                            o += 2 * oprand[0],
+                            I = oprand[1],
+                            S[++A] = t["$" + I];
+                    else {
+                        if (8 != z)
+                            break;
+                        g = S[A--],
+                            S[A] = S[A] | g
+                    }
+                else if (0 == (3 & (z >>= 2)))
+                    if (1 == (z >>= 2))
+                        oprand = n(r, o),
+                            o += 2 * oprand[0],
+                            I = oprand[1],
+                            S[++A] = +m(b[I], I);
+                    else if (3 == z)
+                        g = S[A--],
+                            S[A] = S[A] - g;
+                    else if (5 == z)
+                        g = S[A--],
+                            S[A] = S[A] === g;
+                    else if (12 == z)
+                        C = S[A--],
+                            x = S[A--],
+                            (I = S[A--]).x === e ? S[++A] = f(r, I.pc, I.len, C, I.z, x) : S[++A] = I.apply(x, C);
+                    else {
+                        if (14 != z)
+                            break;
+                        g = S[A],
+                            S[A] = S[A - 1],
+                            S[A - 1] = g
+                    }
+                else if (1 == (3 & z))
+                    if (2 == (z >>= 2))
+                        h(function(f) {
+                            var e = 0
+                                , b = f.length;
+                            return function() {
+                                var a = e < b;
+                                a && h(f[e++]),
+                                    h(a)
+                            }
+                        }(S[A]));
+                    else if (4 == z)
+                        oprand = n(r, o),
+                            o += 2 * oprand[0],
+                            I = oprand[1],
+                            g = t[I],
+                            S[++A] = g;
+                    else if (6 == z)
+                        S[A] = ++S[A];
+                    else {
+                        if (8 != z)
+                            break;
+                        g = S[A--],
+                            S[A] = S[A]in g
+                    }
+                else if (2 == (3 & z))
+                    if (5 == (z >>= 2))
+                        ;
+                    else if (7 == z)
+                        g = S[A--];
+                    else if (9 == z)
+                        g = S[A--],
+                            S[A] = S[A] ^ g;
+                    else {
+                        if (11 != z)
+                            break;
+                        oprand = n(r, o),
+                            I = oprand[1],
+                            c[++d] = [[o + 6, I - 4], 0, 0],
+                            o += 2 * I - 2
+                    }
+                else if (1 == (z >>= 2))
+                    g = S[A--],
+                        S[A] = S[A] < g;
+                else if (8 == z)
+                    oprand = n(r, o),
+                        o += 2 * oprand[0],
+                        I = oprand[1],
+                        S[A] = S[A][I];
+                else if (10 == z)
+                    S[++A] = !0;
+                else {
+                    if (12 != z)
+                        break;
+                    g = S[A--],
+                        S[A] = S[A] >>> g
+                }
+            }
+            return [0, null]
+        }
+        var b = []
+            , a = 0
+            , c = []
+            , d = 0
+            , r = function(f, e) {
+                var b = "" + f[e++] + f[e];
+                return parseInt(b, 16)
+            }
+            , n = function(f, e) {
+                var b = f[e++]
+                    , a = f[e]
+                    , c = parseInt("" + b + a, 16);
+                if (c >> 7 == 0)
+                    return c >> 6 != 0 && (c = -64 | 63 & c),
+                        [1, c];
+                if (c >> 6 == 2) {
+                    var d = parseInt("" + f[++e] + f[++e], 16);
+                    return 0 != (32 & c) ? c = -32 | 31 & c : c &= 31,
+                        c <<= 8,
+                        d = c + d,
+                        [2, d]
+                }
+                if (c >> 6 == 3) {
+                    var r = parseInt("" + f[++e] + f[++e], 16)
+                        , n = parseInt("" + f[++e] + f[++e], 16);
+                    return 0 != (32 & c) ? c = -32 | 31 & c : c &= 31,
+                        c <<= 16,
+                        r <<= 8,
+                        n = c + r + n,
+                        [3, n]
+                }
+            }
+            , i = function(f, e) {
+                var b = f[e++]
+                    , a = f[e];
+                return parseInt("" + b + a, 16)
+            }
+            , o = function(f, e) {
+                var b = "" + f[e++] + f[e];
+                return b = parseInt(b, 16),
+                    String.fromCharCode(b)
+            }
+            , l = function(f, e, b) {
+                for (var a = "", c = 0; c < b; c++)
+                    a += o(f, e),
+                        e += 2;
+                return a
+            }
+            , t = function(f, e, a) {
+                for (var c = 0; c < a; c++) {
+                    var d = n(f, e);
+                    e += 2 * d[0];
+                    var r = l(f, e, d[1]);
+                    b.push(r),
+                        e += 2 * d[1]
+                }
+            }
+            , s = this
+            , p = s.Function
+            , u = Object.keys || function(f) {
+                var e = {}
+                    , b = 0;
+                for (var a in f)
+                    e[b++] = a;
+                return e.length = b,
+                    e
+            }
+        ;
+        return function(e) {
+            e.length;
+            for (var c = 0, d = "", i = c; i < c + 16; )
+                d += o(e, i),
+                    i += 2;
+            if ("HNOJ@?RC" != d)
+                throw new Error("error magic number " + d);
+            n(e, c += 16);
+            c += 8,
+                a = 0;
+            for (var l = 0; l < 4; l++) {
+                var s = r(e, c + 2 * l);
+                a += (3 & s) << 2 * l
+            }
+            c += 16;
+            var p = n(e, c += 16)
+                , u = p[1]
+                , v = c += 2 * p[0];
+            c += p[1];
+            var y = n(e, c);
+            y[1];
+            c += 2 * y[0],
+                b = [],
+                t(e, c, y[1]),
+                f(e, v, u, [])
+        }
+    }(),
+        TAC("484e4f4a403f52430024030fec2af15468890d460000000000000000c0a2a0020025806d4421131e014302023e22170d44441c21131e0343020440170f44441801131e01041c1680474421131e054302063e22170a44441c131e051e0717164444131e052602010a0118010a02101c161e444418002201170644441c131f0018011800131e081a001d0927041c002611020025c050d8020a250c4444131e0b1e0c0101001f06020d250d444421131e0e43020440001f07020f25805144131e10021102121a02221e1324131e140a010f2201173744441c0200251144441800221e15240a000f02163e00131e17012201171844441c21131e174302044022170a44441c131e171e1804001f08021925114444131e1a1a00221e1b240a000f001f09021c253a44442118004302043e2201170944441c1800263e1707444402000021180043021d3e171344441800170a4444021e16064444021f001800001f0a022025804b441801011708444402211f0102001f0618001f071807150039172c444418061801131e22221e2324131e22221e24240a000f18011e252a0a010f19281f0618072e1f0716511806001f0b02262580ce4402041f0621134318063e2201171044441c13221e15240a000f0227402201171744441c131e081e281e15221e2924130a010f0227402201170d44441c21131e0b4318063e2201171b44441c131e0b221e15240a000f221e2a24022b0a010f15003a2201170d44441c21131e2c4318063e2201171244441c131e2c221e15240a000f022d402201170d44441c21131e2e4318063e1706444420001b010b06260a0010011726444421131e2f4318063e2201171244441c131e2f221e15240a000f02304017064444200012001f0c023125809744131e321a001f06131e08221e332418060234131e081a00220200250c44441b020b00201d35001d360a030f1c131e37221e3824023918060a020f1c1322170844441c131e3722170a44441c131e371e3a170944441800201d351b010b07260a0010173144441322172244441c131e3b131e3c29158064392201171044441c131e3d131e3e2915806439170944441800201d35001f0d023f252d444421131e80404302044022171e44441c131e081e281e15221e2924131e80401e80410a010f0280423e001f0e028043258065441b010b06260a00100117805644028044131e2c42012201171144441c131e2c1e8044131e804541012201170a44441c02804613422201170a44441c02804713422201170a44441c02804813422201171044441c028049134202804a13423a0012001f0f02804b25818844131e2c1e804c17064444200002804d131e0842172d4444131e08221e804d24131e2c0a010f1f0602804c1806422201170b44441c02804e1806421706444420001322170944441c131e804f22170c44441c131e804f1e805022170f44441c131e804f1e80501e8051172844444604444406044444051c4444131e804f1e8050221e8051240a000f213e170644442000074604444406094444271f062000052f44440233131e084217244444131e08221e3324131e2c02804c131e081a0022211d805222121d80530a030f1c0702805402805502805602805702805802805902805a02805b02805c02805d02805e0a0b1f0602805f0280600280610a031f07180708031f0818082104171944441f0918071809191f0a13180a191706444420001665180608031f0818082104171b44441f0918061809191f0a131e0b180a191706444420001663131e0b08031f0818082104173144441f091809221e806224131e1002806302001a020a010f22170e44441c131e0b1809191e8064170644442000164d12001f100280652580c9441b010b07260a001017284444131e8066221e80672402130a010f1f0618060200250d44441b020b00201d8068001d80691b010b08260a001017805c4446044444062d4444271f0618061e806a131e806b1e806c3e22170e44441c131e806d1e2515003e170a44441800201d806805274444131e806d221e806e2402806f02000a020f1c131e806d221e80702402806f0a010f1c071b010b06260a001017284444131e80660122171444441c131e80712201170944441c131e8072170a44441800201d8068001f1102807325809f441b010b06260a00100117809044131e0b221e8074240280750a010f1f0618061e8076221e15240a000f221e807724131e100280780280791a0202000a020f221e2a2402807a0a010f15003a2201173344441c131e2c1e15221e15240a000f221e807724131e100280780280791a0202000a020f221e2a2402807a0a010f15003a2201171644441c131e2c1e8044221e15240a000f02807b400012001f1202807c25807144131e1002807d02001a021f061322170844441c131e2e22170b44441c131e2e1e807e17804944131e2e1e807e1f071807221e2a2402807f0a010f15003e2201171444441c1807221e2a240280800a010f15003e2201171044441c1806221e132418070a010f17064444200012001f13028081258095441b010b806c1e8082170d44441b010b806c1e80820046044444060a4444271f0602000005806d44131e0b221e8074240280750a010f1f061806221e8083240280840a010f1f071807221e8085240280860a010f1f081807221e80872418081e80880a010f1f091807221e80872418081e80890a010f1f0a180902808a28180a281f0b1b010b806c180b1d8082180b0007001f1402808b2581204402001f061b010b806c1e808c171244441b010b806c1e808c1f061680f24415051f070a001f08131e2c1e80441f0918092201170744441c0a001f0a15001f0b180b18073a1780af44460444440604444405809b44180a180b191f0c0a001f0d15001f0e180e180c1e253a17354444180c221e808d24180e0a010f171e4444180d221e808e24180c221e808d24180e0a010f1e808f0a010f1c180e2d1f0e1646180c1e80900200281f0e180c1e809117114444180e180c1e8091020028281f0e180e180c1e8092020028281f0e180e180d221e80932402000a010f281f0e1808221e808e24180e0a010f1c07180b2d1f0b16bf4f1808221e8093240280940a010f1f061b010b806c18061d808c1806221e80952415001584000a020f001f1502809625844e44131e2c1e8097221e8098240a000f1f06131e2c1e8099221e8098240a000f1f0715001f0815011f0915021f0a15031f0b15041f0c15051f0d180d1f0e02809a1f0f02809b1f1002809c1f1102809d1f1202809e1f1302809f1f140280a01f150280a11f161806221e2a240280a20a010f15003b2201171444441c1806221e2a240280a30a010f15003b170c4444180c1f0e1680f2441806221e2a24180f0a010f15003b170c444418081f0e1680d8441806221e2a2418110a010f15003b170c444418091f0e1680be441806221e2a2418120a010f15003b2201171444441c1806221e2a240280a40a010f15003b2201171444441c1806221e2a240280a50a010f15003b170c4444180a1f0e168078441806221e2a2418130a010f15003b2201171344441c1806221e2a2418140a010f15003b2201171344441c1806221e2a2418150a010f15003b2201171444441c1806221e2a240280a60a010f15003b2201171444441c1806221e2a240280a70a010f15003b170c4444180b1f0e16084444180d1f0e1807221e2a2418100a010f15003b22170a44441c180e180840170a4444200016814c441807221e2a2418120a010f15003b2201171344441c1807221e2a2418110a010f15003b2201171444441c1807221e2a240280a80a010f15003b22170a44441c180e180a4022170a44441c180e180940170a444420001680f3441807221e2a2418160a010f15003b2201171344441c1807221e2a2418140a010f15003b2201171344441c1807221e2a2418150a010f15003b2201171344441c1807221e2a2418130a010f15003b22170a44441c180e180c4022170a44441c180e180b40170a44442000168086441807221e2a2418100a010f15003a22171344441c1807221e2a2418120a010f15003a22171344441c1807221e2a2418160a010f15003a22171344441c1807221e2a2418130a010f15003a22171344441c1807221e2a2418140a010f15003a22171344441c1807221e2a2418150a010f15003a1f171817180e180d3e4017064444200015001f1715011f1815021f1915041f1a15051f1b181b1f1c1806221e2a240280a90a010f15003b170c444418191f1c168085441806221e2a240280aa0a010f15003b2201171444441c1806221e2a240280ab0a010f15003b170c444418181f1c168054441806221e2a240280ac0a010f15003b170c444418171f1c163944441806221e2a240280ad0a010f15003b2201171444441c1806221e2a240280ae0a010f15003b170c4444181a1f1c16084444181b1f1c1b010b15260a0010221e8098240a000f1f1d1b010b14260a0010221e8098240a000f1f1e181c18173f22170a44441c181c18183f22172a44441c131e804f2201171f44441c131e2c1e80af221e15240a000f221e2a240280b00a010f15003b170644442000181c18173f22170a44441c181c18183f22171444441c181d221e2a2402804f0a010f15003b170644442000181c181a3e22170a44441c181e02003f17064444200012001f160280b12580d144261f0646044444060f4444271f07131e0b1e80b21f0605174444131e0b221e80b3240280b40a010f0b001f06071806263e1705444400131e0b221e8074240280b50a010f1f070280b6131e80b72615c02710131e22221e24240a000f2a150a0a0210280280b628131e1a1a00221e1b240a000f281f0818000280b8180828281f00180718001d80b91318080200253144441b020b011800041c4604444406044444051c44441b020b06221e80ba241b020b070a010f1c131b020b080907000d1806221e80bb2418070a010f1c001f170280bc2580bf4418001e251f0618061502331f0718011733444418001806150129191f0818071504291f07180818071503293a2201170a44441c180818073917064444260018081f0715001f08180818063a17804a4418001808131e80bd221e80be2418001808191580ff2f18001808191508351580ff2f18001808191510351580ff2f18001808191518351580ff2f0a040f0d18082d1f0816bfb41800221e80932402000a010f1f081801171344441808221e80bf24150018070a020f001808001f180280c02580814418001e251f0618061502341f07180615032f1500401709444418072d1f071801171c4444131e80c118071501281a011f081808180718060d160e4444131e80c118071a011f0815001f09180918063a172b44441808180915023423191800221e80c22418090a010f180915032f15033333300d18092d1f0916521808001f190280c3250b444418001480c42f001f1a0280c525314444180215053518011502333118011503351802150433312818001801311805180315032f180431191802312831001f1b0280c62518444418001e2515043a170a4444180015041d251800001f1c0280c72580d24418001e251f0618061501291f0718001807191f0915001f0a131e22221e23241506153418062b280a010f1500301f0d180d150039178097441b010b1a180a1b010b806d28041f0a180a15023515032f1f0b15001f0c180c18073a173c44441800180c150128191f081800180c1b010b1a1800180c191b010b1b26180a18081809180c180b18010a061028040d271f09180c2d1f0c164118000b001f08180018071b010b1a18001807191b010b1b26180a180818091807180b18010a061028040d271f09180d2e1f0d16bf671800001f1d0280c82580d34418001e251f0618061501291f0718000b001f08131e22221e23241506153418062b280a010f1f0d1b010b1a180d1b010b806d2a041f0a180a15004017809144180a15023515032f1f0b18071f0c180c150039173c44441800180c150129191f091800180c1b010b1a1800180c191b010b1b26180a18081809180c180b18010a061029040d271f08180c2e1f0c164118001807191f0918001b010b1a18000b001b010b1b26180a180818091500180b18010a061029041d1f271f081b010b1a180a1b010b806d29041f0a16bf6d1800001f1e0280c92581a744131e100280ca02001a02221e132418000a010f170744441800000a001f0618001e251f0715001f0815001f09180818073a178165441800221e80c22418080a010f1f0a180a1580803a17194444180618091800221e80cb2418080a010f0d16812b44180a1588003a172b444418061809131e80bd221e80be241580c0180a15063430158080180a153f2f300a020f0d1680fa44180a15c0d8003a2201170c44441c180a15c0dfff391737444418061809131e80bd221e80be241580e0180a150c3430158080180a150634153f2f30158080180a153f2f300a030f0d1680ae44180815012818073a178098441800221e80c22418081501280a010f1f0b180a15c0dc003a22170c44441c15c0dc00180b3c22170c44441c180b15c0dfff3c17806244180a1583ff2f150a33180b1583ff2f3015c10000281f0c18061809131e80bd221e80be241580f0180c151234153f2f30158080180c150c34153f2f30158080180c150634153f2f30158080180c153f2f300a040f0d18082d1f08160e4444131e80cc0280cd1a014718082d1f0818092d1f0916be991806221e80932402000a010f001f1f0280ce25825c44131e80c118011a011f0615001f0715001f0818001e251f09180718013a22170a44441c180818093a178212441800221e80c2241808222d1f080a010f1f0a180a1504341f0b180b15004017806f44180b15014017806644180b15024017805d44180b15034017805444180b15044017804b44180b15054017804244180b15064017394444180b15074017304444180b150c4017324444180b150d4017294444180b150e4017805c44180b150f401780a94416816b4416817d4418061807180a0d16817244180818093a1729444418061807180a151f2f1506331800221e80c2241808222d1f080a010f153f2f300d160e4444131e80cc0280cf1a014716813644180815012818093a1780404418061807180a150f2f150c331800221e80c2241808222d1f080a010f153f2f150633301800221e80c2241808222d1f080a010f153f2f300d160e4444131e80cc0280cf1a01471680e044180815022818093a1780b044180a15072f1512331800221e80c2241808222d1f080a010f153f2f150c33301800221e80c2241808222d1f080a010f153f2f150633301800221e80c2241808222d1f080a010f153f2f3015c10000291f0c1500180c3c22170c44441c180c15cfffff3c172f444418061807222d1f07180c150a341583ff2f15c0d800300d18061807180c1583ff2f15c0dc00300d161a4444131e80cc0280d0180c221e152415100a010f281a0147160e4444131e80cc0280cf1a0147161a4444131e80cc0280d1180a221e152415100a010f281a014718072d1f0716bde1180718013a170a4444180618071d25131e80bd1e80be131e80bd180610001f200280d22582ad440a001f06131e80c115c080001a011f0715001f0815001f0918001e251f0a180818013a22170a44441c1809180a3a17824a441800221e80c2241809222d1f090a010f1f0b180b1504341f0c180c15004017806f44180c15014017806644180c15024017805d44180c15034017805444180c15044017804b44180c15054017804244180c15064017394444180c15074017304444180c150c4017324444180c150d4017294444180c150e4017805c44180c150f401780a94416816b4416817d4418071808180b0d168172441809180a3a1729444418071808180b151f2f1506331800221e80c2241809222d1f090a010f153f2f300d160e4444131e80cc0280cf1a0147168136441809150128180a3a1780404418071808180b150f2f150c331800221e80c2241809222d1f090a010f153f2f150633301800221e80c2241809222d1f090a010f153f2f300d160e4444131e80cc0280cf1a01471680e0441809150228180a3a1780b044180b15072f1512331800221e80c2241809222d1f090a010f153f2f150c33301800221e80c2241809222d1f090a010f153f2f150633301800221e80c2241809222d1f090a010f153f2f3015c10000291f0d1500180d3c22170c44441c180d15cfffff3c172f444418071808222d1f08180d150a341583ff2f15c0d800300d18071808180d1583ff2f15c0dc00300d161a4444131e80cc0280d0180d221e152415100a010f281a0147160e4444131e80cc0280cf1a0147161a4444131e80cc0280d1180b221e152415100a010f281a0147180815c07ffe3b1731444418081501281f0d1807180d1d25180618061e25131e80bd1e80be131e80bd1807100d1801180d291f01157f1f0818082d1f0816bda91808150039171f4444180718081d25180618061e25131e80bd1e80be131e80bd1807100d1806221e80932402000a010f001f210280d32580ac441801213e2201170944441c1801263e2201170a44441c180115003a170a444418001e251f01180115003e17074444020000131e100280ca02001a02221e132418000a010f2201171944441c131e100280d402001a02221e132418000a010f0117214444180118001e253e170744441800001800221e80d524150018010a020f00180115c0ffff3a171444441b010b2026180018010a0210161044441b010b2126180018010a0210001f220280d6258067441800213e2201170944441c1800263e2201170c44441c18001e2515003e170744441800001b010b1f1800041f001b010b1f1801041f011b010b18261b010b1d261b010b19261800200a02101b010b1c1b010b19261801120a0210040a0210120a0210001f230280d7258063441800213e2201170944441c1800263e2201170c44441c18001e2515003e170744441800001b010b1f1801041f011b010b221b010b18261b010b1e261b010b19261800120a02101b010b1c1b010b19261801120a0210040a0210200a021004001f240280d8258181440280d91f0618011708444418011f0602001f0715001f0918001e2518091503283b1780aa441800221e80c2241809222d1f090a010f1580ff2f1510331800221e80c2241809222d1f090a010f1580ff2f150833301800221e80c2241809222d1f090a010f1580ff2f301f0818071806221e80cb2418081480da2f1512340a010f281f0718071806221e80cb24180815c3f0002f150c340a010f281f0718071806221e80cb241808158fc02f1506340a010f281f0718071806221e80cb241808153f2f0a010f281f0716bf4f18001e251809291500391780a5441800221e80c2241809222d1f090a010f1580ff2f15103318001e25180939171b44441800221e80c22418090a010f1580ff2f150833160644441500301f0818071806221e80cb2418081480da2f1512340a010f281f0718071806221e80cb24180815c3f0002f150c340a010f281f07180718001e25180939171b44441806221e80cb241808158fc02f1506340a010f160744440280db281f0718070280db281f071807001f250280dc251144440280dd221e2a2418000a010f001f260280de2581094402001f0615001f07180718001e251503293a1780f0441b010b261800221e80cb2418071500280a010f041f081b010b261800221e80cb2418071501280a010f041f091b010b261800221e80cb2418071502280a010f041f0a1b010b261800221e80cb2418071503280a010f041f0b1806131e80bd221e80be2418081502331809150435300a010f281f061800221e80cb2418071502280a010f0280db3f172744441806131e80bd221e80be2418091504331580f02f180a150235150f2f300a010f281f061800221e80cb2418071503280a010f0280db3f172144441806131e80bd221e80be24180a1506331580c02f180b300a010f281f0618071504281f0716bf091806001f270280df25804c441800153f2f1f00131e80bd221e80be2418001800151a3a170b444415804116254444180015343a170b4444158047161544441800153e3a170a4444157c16064444156f280a010f001f280280e0253444441b010b281f06180618001518340418061800151234042818061800150c340428180618001506340428180618000428001f290280e1258097441b010b806b1e80e20280e3281f061b010b1726180602002580774418001e2515083a1705444400460444440604444405805e441b010b24261b010b271800221e80952415080a010f041800221e809524150015080a020f0a02101f0618060280e43e171444441b010b2b262018000a02101c161a444418060280e53e171044441b010b2b261218000a02101c07000a02101c001f2a0280e6258050441b010b806b18001d80e7460444440604444405394444131e806d17164444131e806d221e806e240280e818010a020f1c131e80e917164444131e80e9221e806e240280e818010a020f1c07001f2b0280ea2580ab4402001f06460444440604444405804144131e806d17154444131e806d221e80eb240280e80a010f1f061806012201170944441c131e80e917154444131e80e9221e80eb240280e80a010f1f0607180617805644460444440604444405804a441b010b24261b010b271806221e80952415080a010f041806221e809524150015080a020f0a02101f0718070280e43e170a444420001610444418070280e53e1706444412000712001f2c0280ec2580fa44121f061b010b806b1e80e7203e170b4444201f06162344441b010b806b1e80e7123e170b4444121f06160e44441b010b2c260a00101f06131e081a0022121d80ed22121d2e2218061d80ee22121d80ef22121d3522121d80f022121d80f122121d804c22121d806822121d80f2220280f32506444420001f0818081d131f0718071b010b0c260a00101d80ef18071e80ef01178061441b010b0d1807041c1b010b111807041c18071b010b0e260a00101d80f018071b010b0f260a00101d80f118071b010b10260a00101d804c18071b010b12260a00101d80f218071b010b13260a00101d2e18071b010b16260a00101d80ed1807001f2d0280f425805b44131e08221e80f52418000a010f1f0615001f0718061e251501291f08180815003b173344441800180618081919170a444415011606444415001f09180918061e25180829150129331807301f0718082e1f08164a1807001f2e0280f62536444415001f06180618011e253a17244444180015c1003f2a1801221e80c22418060a010f281500351f0018062d1f0616571800001f2f0280f72536444415001f06180618011e253a1724444418001801221e80c22418060a010f3115c1003f2a1500351f0018062d1f0616571800001f300280f82580704418002201170744441c02001f061806221e807724131e100280f902001a0202000a020f1f061806221e2a240280e30a010f157f40172044441806221e80d52415001806221e2a240280e30a010f0a020f1606444418061f061806170a444418061607444402808a1f061806001f310280fa2580aa4418002201170744441c02001f061806221e806224131e100280fb02001a020a010f1f0718071716444418070b00221e80d52415010a010f1606444402001f061806171544441806221e80fc240280fd0a010f16054444261f08131e081a001f0918081780414415001f0a180a18081e253a1732444418091808180a19221e80fc240280db0a010f0b001808180a19221e80fc240280db0a010f0b010d180a2d1f0a16491809001f320280fe25808e441800012201171744441c131e80ff221e81002418000a010f0281013e170a4444131e081a0000131e08221e80f52418000a010f221e8102240a000f1f06131e081a001f0715001f08180818061e253a173844441801171b44441807180618081918001806180819190200280d161444441807180618081918001806180819190d18082d1f0816431807001f3302810325807344131e80c1221e81042418000a010f171344441800221e8105241b010b340a010f001800131e084117804544131e08221e80f52418000a010f221e8102240a000f1f061806221e810624020025184444180018011b010b341b020b00180119040d180000131e081a000a020f001800001f34028107258078441800012201171744441c131e80ff221e81002418000a010f0281013e17074444020000131e08221e80f52418000a010f221e8102240a000f1f0602001f0715001f08180818061e253a17284444180718061808190a010280db281800180618081919280280fd28281f0718082d1f0816531807001f350281082580c244131e0b221e8074240280750a010f1f07180715301d8109180715101d810a1807221e80832402810b0a010f1f08180802810c1d810d1808221e810e2402810f1502150c0a030f1c180815021d8110180815011d811118080281121d81131808221e811424150815081508150015020a050f1c1808221e8115240a000f1c1807221e8076240a000f1f0615001f09180915203a17294444180015c1003f2a1806221e80c224180018061e252c0a010f281500351f0018092d1f0916541800001f360281162521444446044444060a4444271f06157f00050e44441b010b36148117040007001f3702811825124444110281181d80901118001d8119001f3802811a251e44444604444406094444271f062000050c4444131e806d01010007001f3902811b251e44444604444406094444271f062000050c4444131e80e901010007001f3a02811c251e44444604444406094444271f062000050c4444131e806601010007001f3b02811d252e44441b010b0a1b010b3b260a0010041b010b0a1b010b3a260a001004281b010b0a1b010b39260a00100428001f3c02811e25244444131e811f1f0618061e81090280b62818061e810a280280b62818061e812028001f3d028121251a4444131e811f1f0618061e81220280b62818061e812328001f3e02812425806b44131e8125020025805e44028126131e2c4217804c44131e2c221e8126240a000f221e8127240200252e44441b030b0018001e81280280b62818001e8129280280b62818001e812a280280b62818001e812b28041c000a010f1c160a444418000200041c001a01001f3f02812c25807c4402812d1f0615001f0721131e2c1806194302044017104444131e2c1806191f07161b444421131e2c18061943020440170c4444131e2c1806191f0746044444060a4444271f09121f0805174444131e0b221e812e2402812f0a010f1c201f080702813013421f0918070280b6281808280280b628180928001f804002813125806044131e1a1a001f061806221e81322415010a010f1c1806221e81332415050a010f1c15001806221e8134240a000f291f071806221e813324150b0a010f1c15001806221e8134240a000f291f08131e22221e813524180718080a020f001f80410281362581c3440281370281380281390a031f06131e081a001f07131e081a001f081806031f091809210417806c441f0a131e0b221e80742402813a0a010f1f0b180b02813b1d813c180b1e813d02813e1d813f180b1e813d180a1d8140131e0b1e80b2221e80bb24180b0a010f1c1807180a180b1e81410d1808180a180b1e81420d131e0b1e80b2221e80ba24180b0a010f1c16bf9302814302814402814502814602814702814802814902814a02814b02814c02814d02814e02814f02815002815102815202815302815402815502815602815702815802815902815a02815b02815c02815d02815e02815f0a1d1f0915001f0b271f0a271f0c15001f0d180d18091e253a1780b3441806031f0e180e210417809e441f0f131e0b221e80742402813a0a010f1f10181002813b1d813c18101e813d02813e1d813f18101e813d1809180d1902816028180f281d8140131e0b1e80b2221e80bb2418100a010f1c18101e81411807180f19402201171044441c18101e81421808180f19401f11131e0b1e80b2221e80ba2418100a010f1c1811171b4444180d151e3a170e44441501180d33180a301f0a1607444416bf61180d2d1f0d16bf49180a221e152415100a010f001f804202816125809b442118014302816240170544440018000280db281f061801221e80fc24131e1002816302001a020a010f1f0715001f09180918071e253a1780604418071809191f081808221e80cb2415000a010f0281643e171844441808221e80bf24150118081e250a020f1f08165a1808221e2a2418060a010f15003e171744441808221e80bf2418061e2518081e250a020f0018092d1f0916bf9c001f80430281652580744446044444060a4444271f060200000580614402001f06131e806d171d4444131e806d221e80eb2418000a010f1f06180617074444180600131e80e9171d4444131e80e9221e80eb2418000a010f1f061806170744441806001b010b8043261800131e0b1e81660a02101f0618060007001f804402816725808944460444440604444405807c44131e806d17154444131e806d221e806e24180018010a020f1c131e80e917154444131e80e9221e806e24180018010a020f1c1481681f06131e0b1800028169281d8166131e0b18000280db2818012802816a28131e1a131e1a1a00221e1b240a000f1806281a01221e816b240a000f2802816c281d816607001f804502816d2525444446044444060d4444271f0618061e811900050f4444131e816e02816f1a011c07001f804602817025124444131e8171221e15240a000f1e25001f80470281722581bb441b010b06260a00102201170d44441c1b010b08260a001017074444020000131e81732201170944441c131e81742201170944441c131e81751f06131e812502002581744446044444060d4444271f0618000200041c05815e441b020b0617814f441b020b06131e081a0022131e081a00220281761d81770a011d81781a011f06020025054444001f07131e1002817902001a021f08131e1002817a0280791a021f091806221e817b2402000a010f1c131e817c260200250d44441b030b000200041c001581f40a02101c1806221e817d240a000f1f0a180a131e81254117374444180a221e8127240200251344441b030b06221e817e2418000a010f000a010f221e812724020025054444000a010f1c162f44441806221e817d240200251c44441b030b06221e817e2418001b030b071b030b070a030f1c0018070a020f1c1806020025806244180022170a44441c18001e817f22170d44441c18001e817f1e817f178042441b030b08221e81802418001e817f1e817f0a010f1f0618061726444418060b00221e8062241b030b090a010f1f071807170e44441b030b0018060b00041c001d8181160a444418000200041c07001a01001f804802818225805944028183221e807724131e100281840280791a020200253c4444131e22221e24240a000f15102a1500301f0618000281853d170a44441806160c4444180615032f1508301f071807221e152415100a010f000a020f001f80490281862580504418001e2515223e178043441b010b2f2615001800221e80bf24150015200a020f0a02101f061806221e15240a000f221e80bf24150015020a020f1800221e80bf24152015220a020f3e0012001f804a028187258060441b010b8044028188041f06180622170d44441c1b010b804a180604170744441806001b010b8049260a00101f0618061b010b2f26150018060a021028221e80bf24150015220a020f1f061b010b80452602818818060a02101c1806001f804b02818925324444180001170744440200001b010b0b1504041f0618061b010b25261b010b2326180018060a021002818a0a021028001f804c02818b258155441801173b444415001f0615001f07180718001e253a1728444418001807191e818c17154444180018071918011806222d1f06191d818d18072d1f07165302001f061800221e818e240200251c44441b02220b061b010b0a18001e818d0402818f28281d8190000a010f1c18061b010b09260a0010281f061b010b8049260a00101f07131e22221e23241807221e80c22415030a010f15082b0a010f1807221e80c22415030a010f15082c281f081807221e80bf24150415041808280a020f1f091b010b251b010b2326180618090a0210180728041f061b010b806b221e8191028192131e8193180604280280fd28281d8191271f0a1b010b1726180a020025804e4418001e819415003d22170a44441c18001e8195173644441b010b806b1b010b804c18001e8195041d81961b010b806b18001e81951d81971b010b80452602819818001e81950a02101c000a02101c001f804d02819925848644131e2c22170644441c1322170844441c131e0b011705444400131e081a002202819a1d819b2215041d819c2218001e819a1d818d131e081a002202819d1d819b2215031d819c221b010b091d819e131e081a002202819f1d819b2215031d819c221b010b3c1d819e131e081a00220280751d819b2215031d819c221b010b371d819e131e081a00220281a01d819b2215031d819c221b010b091d819e131e081a00220280991d819b2215001d819c131e081a00220281a11d819b2215001d819c131e081a00220281a21d819b2215001d819c131e081a00220281a31d819b2215001d819c131e081a002202804e1d819b2215001d819c131e081a00220281a41d819b2215031d819c221b010b3d1d819e131e081a00220281a51d819b2215031d819c221b010b3e1d819e131e081a00220281a61d819b2215011d819c131e081a00220281a71d819b2215011d819c131e081a00220281a81d819b2215011d819c131e081a00220281a91d819b2215001d819c131e081a00220281aa1d819b2215031d819c221b010b3f1d819e2215011d818c131e081a00220281ab1d819b2215031d819c221b010b80401d819e131e081a00220281ac1d819b2215031d819c221b010b80411d819e131e081a00220281ad1d819b2215031d819c221b010b091d819e131e081a00220281ae1d819b2215031d819c221b010b141d819e131e081a00220281af1d819b2215031d819c221b010b80421d819e131e081a00220281b01d819b2215031d819c221b010b151d819e131e081a00220281b11d819b2215031d819c221b010b091d819e131e081a00220280971d819b2215001d819c131e081a00220281b21d819b2215031d819c221b010b80441d819e220281981d81b3131e081a00220281b41d819b2215031d819c221b010b80461d819e131e081a00220281b51d819b2215031d819c221b010b80471d819e131e081a00220281b61d819b2215031d819c221b010b80481d819e2215011d818c131e081a0022022e1d819b2215011d819c131e081a00220281b71d819b2215041d819c221b010b806a1e81b81d818d131e081a00220281b91d819b2215031d819c221b010b804b1d819e131e081a00220281ba1d819b2215031d819c221b010b091d819e131e081a00220281bb1d819b2215041d819c0a221f060a001f07180608031f08180821041780e0441f0918061809191e819c1f0a180a15004017234444180a15014017374444180a15024017804444180a150340178053441680a94418061809191b010b0a131e2c18061809191e819b19041d818d16808c4418061809191318061809191e819b191d818d168076441806180919131e0b18061809191e819b191d818d16805e4418061809191e818c17324444131e8125172644441807221e808e2418061809191e819e221e292418061809191e81b30a010f0a010f1c16244444180618091918061809191e819e221e29242618061809191e81b30a020f1d818d16bf1f131e812517364444131e8125221e81bc2418070a010f221e8127240200251544441b010b804d261b020b0618000a02101c000a010f1c160d44441b010b804d1806041c001f804e0281bd25837a442118014302043e22170c44441c2118004302024022170b44441c18001e81be01170e44441b010b380281bf1a014715001f0615001f0715c0fff11f08131e1a1a00221e1b240a000f1583e82b1500351f091b010b806a1e81c00122173844441c1b010b30261b010b3026150018090200280a0210131e2e1e807e221e80bf24131e2e1e81c11e251502280a010f0a021018082c1f071809180718082a31150035221e152415020a010f1f0a180a1f0b180a1e25152039171b4444180a221e80bf24180a1e251520290a010f1f0b163a4444180a1e2515203a172f444402001f0c15001f0d180d1520180a1e25293a17124444180c021f281f0c180d2d1f0d1666180c180b281f0b0281c21f0c0281c31f0d0281c31f0e0281c41f0f180f180e28180d28180c28180b281f06131e80b726180615020a02101f061b010b3026150018060200280a02101f101b010b2d260a00101f1102001f121801170c444418011f1216811b441b010b80731e81c5221e2924110281c618000a030f1c18001e80b222171a44441c131e80ff221e81002418001e80b20a010f0281014017806d4415001f1318001e81c7173244441b010b2f261500131e80ff221e8100241b010b332618001e80b218001e81c70a02100a010f0a02101f13162644441b010b2f261500131e80ff221e8100241b010b3418001e80b2040a010f0a02101f130281c81813280280fd281f121b010b3218001e81be041f1318001e81c9171a4444131e08221e81ca24181318001e81c90a020f1606444418131f1318121b010b35181304281f1218120281cb281b010b3118001e81be04280280fd281f1218120281cc280281cd281f121b010b80731e81c5221e2924110281ce18120a030f1c1b010b2e1811041f131b010b806a1e81c00122170d44441c1b010b37260a00101f141b010b806a1e81c00122172344441c1b010b806b1e81962201171444441c1b010b804c1b010b804402819804041f151b010b806f1806041b010b806f18061481cf2b15003504281b010b806f181418063104281b010b806f1b010b302618101b010b806a1e81c00122170b44441c131e2c1e8097221e15240a000f0a021018082c1510331b010b3026181018120200280a021018082c3004281b010b806f18131508331b010b806a1e81d01504333018063104281b010b29180704281f161b010b806f1500041c1815170b444418161815281f161816001f804f0281d125804844131e81d21a001f061806221e8067240281d31801200a030f1c1806221e81d4240281d50281d60a020f1c1806221e81d724131e80ff221e81002418000a010f0a010f1c001f80500281d825807244131e0b22170b44441c131e0b1e81d90117054444001b01131e1a221e81da240a000f1d81db1b010b807e08031f0618062104171e44441f07131e0b221e81d92418071b010b807e1807190a020f1c1660131e817c260200250d44441b010b805620041c001b010b80790a02101c001f80510281dc2580644415001f0618001e81dd2201170a44441c18001e81de2201170a44441c18001e81df2201170a44441c18001e81e01708444415011f061b010b8054131e081a002218001e808f1d819e2218061d818522131e1a221e81da240a000f1d81e1041c001f80520281e22580a74418001f0618001e808f1f0718001e81e317804e4418070281e43e2201170b44441c18070281e53e1718444418001e81e60b001f0618061e81e71f081623444418070281e83e1718444418001e81e30b001f0618061e81e71f081605444400131e081a002218071d819e2218061e81e91d81852218061e81ea1d81eb22131e1a221e81da240a000f1d81e11f091808170b4444180918081d819c1b010b80541809041c001f80530281ec258078441b010b8056260a0010170544440018001f0618061e81e11f071b010b807a15003f17144444180618061e81e11b010b807a291d81e118061b010b805518061e819e041d819e1b0118071d81ed18001e81ee123e171044441b01220b807d1501281d81ef1b010b807b221e808e2418060a010f1c001f80540281f025804144131e081a002215001d81f12215011d81f22215021d81f32215031d81f42215041d81f52215051d81e42215061d81e82215071d81e51f061806180019001f80550281f6258070441b010b807b1e251b010b80773b171044441b010b8058260a00101c200018002201171c44441c131e1a221e81da240a000f1b010b807c291b010b80793b172d44441b010b807b1e251b010b80783b171044441b010b8058260a00101c20001b010b8059260a00101c200012001f80560281f72580bd441b010b807b1e2515003d1705444400131e081a00221b010b806b1e81971d81e122131e2c1e80971d81f822131e2e1e807e1d818d22131e081a00221b010b807b1d81f9221b010b807d1d121d819e1f061b010b0b1508041f07131e081a002218061d81fa1f08131e081a002218071b010b25261b010b23261b010b8076221e81fb24131e80ff221e81002418060a010f0a010f18070a02100280dd0a0210281d81fa1f081b010b80502618081b010b806b1e81fc0a02101c001f80570281fd252044441b010b8059260a00101c1b010b8057260a00101c1b010a001d81fe001f80580281ff253044441b010b807e08031f0618062104171e44441f07131e0b221e82002418071b010b807e1807190a020f1c1660001f8059028201253c444415001f0618061b010b806b1e82021e253a172544441b010b806b1e8202180619221e132418000a010f17064444200018062d1f06165012001f805a02820325834d44131e81d21e281f0618061e80671f0718061e81d41f0818061e81d71f0918061e82041f0a18061e82051709444400160a44441806201d82051806020025805644111e8206221e808e24131e081a00220281d41d8207221b031d82080a010f1c131e1002820902121a02221e132418000a010f17174444111801221e80fc2402820a0a010f0b001d820b1b020b08111b0310001d81d41806020025134444111b031d820c1b020b0a111b0310001d820418060200253e4444110a001d8206111e8206221e808e24131e081a00220280671d8207221b031d82080a010f1c1118001d820d1118011d820e1b020b07111b0310001d806702820f0280690282100282110282120282130282140a071f0b18060200258234441b010b805a111e820e0417821d44111e820e221e2a240282150a010f157f39170d44441b020b09111b0310001118001d8216111e82171f06111e820f1f07111e80691f08111e82101f09111e82111f0a111e82121f0b111e82131f0c111e82141f0d111e82181f0e111e82191f0f131e081a001f1015001f1118111b020b0b1e253a1721444418101b020b0b181119111e821a1b020b0b181119190d18112d1f111658131e081a00221b010b8061261b020b00111e820e0a02101d81be1f11111e820d0281d33d17804044111e820b02821b3e2201170d44441c111e820b0281d63e171c44441b010b805f261811111e820b111e82160a03101c160d44441b020b09111b0310001b010b80641b020b0004171644441b020b00221e821c2418110a010f160c44441b010b804f1811041f121b010b806226111e820e18120a02101f13111e820622171244441c111e82060b001e82070280673f170644442600111e82061f1415001f15181518141e253a17354444181515003e1710444418141815191e820818131d1e1118141815191e8207191118141815191e8208101c18152d1f151646111e820c170f4444111e820411111e820c101c11028206091118061d82171118071d820f1118081d80691118091d821011180a1d821111180b1d821211180c1d821311180d1d821411180e1d821811180f1d821915001f1518151b020b0b1e253a17214444111e821a1b020b0b18151918101b020b0b181519190d18152d1f1516581b020b09111b0310001d81d7001f805b02821d2582e44402821e2582ad4418012201170a44441c131e081a001f011b010b807f22170c44441c1800131e821f411f0602001f070282201f0818061716444418001e81be1f0718001e82211f081626444418001f0718011e82211715444418011e8221221e8222240a000f1606444418081f0818080282204022170b44441c18080281d3402201170e44441c1b010b805a18070401171144441b020b0726180018010a021000131e081a00221b010b8061261b020b0018070a02101d81be1f0918080281d33d178166441b010b805e26180018010a0210221e80fc2402820a0a010f0b00221e8098240a000f1f0a180a02821b3e2201170b44441c180a0281d63e17811a4418061780b7441800221e8223240a000f221e8224240a000f221e8127240200258079441b010b805f261b030b091b030b0a18000a03101c1b010b80641b020b0004171844441b020b00221e821c241b030b090a010f160e44441b010b804f1b030b09041f061b010b8062261b030b0718060a02101f071b010b8060261b030b00180718000a03101f081b020b072618081b030b010a021000020025174444131e81250200250a44441b040b0047001a01000a020f0016805d441b010b805f261809180a18011e80b20a03101c1b010b80641b020b0004171644441b020b00221e821c2418090a010f160c44441b010b804f1809041f0b1b010b8062261807180b0a02101f0c1b020b0726180c18010a021000161144441b020b0726180018010a02100016808c4418080282203e178075441b010b80641b020b0004171644441b020b00221e821c2418090a010f160c44441b010b804f1809041f0a1b010b8062261807180a0a02101f0b1806172544441b010b8060261800180b210a03101f0c1b020b0726180c18010a021000161144441b020b0726180b18010a021000161144441b020b0726180018010a021000001f061b010b805d260a0010011705444400131e822517094444001609444413201d8225131e82261f071318061d8226001f805c02822725094444131e8226001f805d0282282581114402001f061b010b807f22170c44441c1800131e821f411722444418001e8229221e362402822a0a010f1f0718071708444418071f06180600180122170a44441c18011e82291780c7441b010b808022170f44441c18011e822b131e822c411722444418011e8229221e362402822a0a010f1f0718071708444418071f0618060018011e8229131e80c1411780424415001f07180718011e82291e253a1730444418011e82291807190b00221e8098240a000f02822a3d170f444418011e82291807190b010018072d1f07164818011e8229131e08411737444418011e822908031f0718072104172344441f081808221e8098240a000f02822a3e170d444418011e822918081900165b180600001f805e02822d2580a9441802263e170744441800001802221e15240a000f1f02180102821b3e178073441800201d81c71802221e80fc240280fd0a010f1f06131e081a001f0718061780464415001f08180818061e253a1737444418071806180819221e80fc240280db0a010f0b00131e822e1806180819221e80fc240280db0a010f0b01040d18082d1f081644180018071d80b2161744441800131e80ff221e822f2418020a010f1d80b21800001f805f02823025806944131e821f1801131e081a002218001e82211d82212218001e82291d82292218021d80b22218001e82311d82312218001e82321d82322218001e82331d82332218001e82341d82342218001e82351d82352218001e82361d82362218001e82371d82371a02001f80600282382580af4418011f061b010b806b1e82391e251500391780804415001f0718071b010b806b1e82391e253a17806b441b010b806b1e82391807190b001f081808221e132418010a010f178045441801221e80772418081b010b806b1e82391807190b010a020f1f061b010b80731e81c5221e2924180002823a02823b18012802823c281806280a030f1c160c444418072d1f0716bf8b131e822e18060418063d170d4444131e823d1806041f061806001f806102823e252b444418001800221e2a240280e30a010f157f40170e444402823f180128160a444402824018012828001f8062028241251744441b010b805b1800041c1b010b805c1800041c001f8063028242250d444418001b010b806541001f8064028243251a444411131e80ff221e822f241b010b80810a010f1d8244001f80650282452580cc441b010b806a1e81c01706444426001b010b80641104170c4444111e8244160944441b010b806b1f06131e08221e81ca24180618000a020f1c1b010b80671806041c18061e8241172444441b010b806818061e8246041c1b010b806918061e8247041c1b010b806311041c1b010b806b1e82480122170a44441c18061e8199178049441b010b806b201d824818061e8249124022170b44441c18061e824a01170e44441b010b8051260a00101c1b010b2a260a00101c131e817c261b010b804e150018060a03101c001f806602824b2580684418001e819a15003e2201171a44441c131e22221e232418001e819a0a010f18001e819a3f170e44441b010b3802824c1a014718001e8241172c444418001e82461e2515003e2201170e44441c18001e82461e808e01170e44441b010b3802824d1a0147001f806702824e2536444415001f06180618001e253a172644441b010b806b1e8202221e808e24131e1018001806191a010a010f1c18062d1f061655001f806802824f2580414415001f06180618001e253a173144441b010b806b1e8239221e808e24131e1018001806190b001a0118001806190b010a020a010f1c18062d1f06164a001f806921131e081e81ca430206401780c044131e08221e3324131e080281ca131e081a00220281ca25808f441800263e2201170944441c1800213e170e4444131e82500282511a0147131e081800041f0615011f0718071b021e253a178058441b021807191f081808264022170944441c1808214017374444180808031f0918092104172944441f0a131e081e281e8252221e29241808180a0a020f170e44441806180a1808180a190d165518072d1f0716bfa41806001f806a18806a1d805222201d805322201d82530a030f1c131e081e80f50117810644131e0802002580f644131e081e281e82521f06131e081a0022261d15221e82542402150a010f011f07021502825502825602825202825702825402110a071f0818081e251f0902002580b2442118004302064022171744441c211800430202402201170944441c1800263e170e4444131e82500282581a01470a001f06180008031f0918092104172844441f071b020b06221e2924180018070a020f171144441806221e808e2418070a010f1c16561b020b071780444415001f0818081b020b093a173544441b020b06221e292418001b020b081808190a020f171644441806221e808e241b020b081808190a010f1c18082d1f08164618060000260a00101d80f5131e081a00220282591d81b82215011d81d022121d81c01f806a131e081a0022121d825a2215001d819a22121d819922121d8241220a001d8246220a001d8202220a001d8247220a001d82392202825b1d81912202825c1d80e22202825d1d81fc1f806b131e081a001f806c14825e1f806d15001f806e0200252044441b011b010b80711d825f1b0118001d82601b010b29180015023404001f8070271f806f0200252d44441b011b010b80721d825f1b010b806e151c331800150435301f061b0118001d82601b010b29180604001f80710200252a44441b011b010b80701d825f1b010b291b010b806e151a33180015063530041b010b2818000428001f8072131e081a0022020025804c44121f061b010b8064110417114444111e82441e825a1f06160e44441b010b806b1e825a1f06180622171e44441c131e37221e38240282611800280282622802826318010a030f1c001d81c51f8073131e80bd1e80be1f80740282641f8075131e081a00220200258086441800263d170744440200001b010b8076221e826524180015060200251444441b010b8075221e80cb2418000a010f000a030f1f0618061e2515042c1f07162c44441807150040172344441807150140171d44441807150240171b4444180715034017194444161c4444180600180602826628001806028267280018060280db2800001d81fb220200252544441b010b8076221e826524180015100200250d44441b010b8074180004000a030f001d82682202002585f1441800263d17074444020000131e081a001f08131e081a001f0902001f0a02001f0b02001f0c15021f0d15031f0e15021f0f0a001f1015001f1115001f1215001f13181318001e253a1782c1441800221e80cb2418130a010f1f0a131e081e281e8252221e29241808180a0a020f01171544441808180a180e222d1f0e0d1809180a200d180c180a281f0b131e081e281e8252221e29241808180b0a020f170c4444180b1f0c16825a44131e081e281e8252221e29241809180c0a020f1781ae44180c221e80c22415000a010f1581003a1780b54415001f061806180f3a1780404418111501331f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218062d1f0616bfbe180c221e80c22415000a010f1f0715001f06180615083a17804d441811150133180715012f301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218071501341f0718062d1f0616bfb11680bc4415011f0715001f061806180f3a1780474418111501331807301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1215001f0718062d1f0616bfb7180c221e80c22415000a010f1f0715001f06180615103a17804d441811150133180715012f301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218071501341f0718062d1f0616bfb1180d2e1f0d180d15003d171a4444131e22221e8269241502180f0a020f1f0d180f2d1f0f1809180c09168061441808180c191f0715001f061806180f3a17804d441811150133180715012f301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218071501341f0718062d1f0616bfb1180d2e1f0d180d15003d171a4444131e22221e8269241502180f0a020f1f0d180f2d1f0f1808180b180e222d1f0e0d131e80bd180a041f0c18131501281f1316bd3b180c02004017824644131e081e281e8252221e29241809180c0a020f1781ae44180c221e80c22415000a010f1581003a1780b54415001f061806180f3a1780404418111501331f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218062d1f0616bfbe180c221e80c22415000a010f1f0715001f06180615083a17804d441811150133180715012f301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218071501341f0718062d1f0616bfb11680bc4415011f0715001f061806180f3a1780474418111501331807301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1215001f0718062d1f0616bfb7180c221e80c22415000a010f1f0715001f06180615103a17804d441811150133180715012f301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218071501341f0718062d1f0616bfb1180d2e1f0d180d15003d171a4444131e22221e8269241502180f0a020f1f0d180f2d1f0f1809180c09168061441808180c191f0715001f061806180f3a17804d441811150133180715012f301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218071501341f0718062d1f0616bfb1180d2e1f0d180d15003d171a4444131e22221e8269241502180f0a020f1f0d180f2d1f0f15021f0715001f061806180f3a17804d441811150133180715012f301f11181218011501293d1720444415001f121810221e808e2418021811040a010f1c15001f111609444418122d1f1218071501341f0718062d1f0616bfb118111501331f11181218011501293d171c44441810221e808e2418021811040a010f1c160f44441609444418122d1f1216501810221e80932402000a010f001d82651f807615812c1f807715141f807815c927c01f807915001f807a0a001f807b15001f807c15001f807d131e081a00221880531d81f1221880531d81f2221880531d81f3221880521d81f4221880521d81f5221880531d81e4221880531d81e8221880531d81e51f807e131e821f22170d44441c131e821f131e08411f807f131e822c22170d44441c131e822c131e08411f8080131e80ff221e81002418806b0a010f1f808118804f1f80821880651e281880661d82451880651e281880821d821c18806a1222170b44441c180c260a00101d81c018001880651d824318001880661d824518001880821d821c131e08221e3324180002826a131e081a0022201d80520a030f1c000a02101c00826b00077d46eee0187b5f06775dcbf21c3006752fc1d7f0eb096d2fccced5a190e33f067c27cadfbe77087e36c1dd912ed28b037929d7065727dcb77a3f0e7a3fceb851cd1d25b2930740e62f047134f4a0087c27a2850a7455d10c7c26a78c1329be6f1a810d780971398e6d6930813a910e5125b87851e7037e0d3d8d056a3208713f9c762ab35002064a28b5651c7f0b7b21b858f4249b08501b4f0171046c35ae4a0b5005ad0b8c635ad58d0f64086c3db726943097ed21433c85309eed0b7aacfdc0a17041da1c3996e2c5f493d6ab75377815206c2fbb17066b358d04653c1068209d0661fdff1337820e52d7d593f30c7f33862d22b458cb99132db4045c3681e4077f3d8dd8143598087f3c88c3f5ffe4e8077a356f4c145dd7012901280c6a3c6458d59bdef30b3e6d553e286f3c74e20889320d97bf356559a247e411084cffc4b63573f00a1d217f2f57e4c984c65acbde9414523accde8d0bbce4b6f0619e0969bdcab1cbbacb9104553e6527057e0c7a357a066a007607701b067407720948a8097c0c72323481f5f6d60f430b41eb085fb735344efcfbaf633a09681749feea0d256501047b0746f907710949f8ceb9f1085c0752ddbe5aa04109760842d88d1b1745ef1243055ad66220ae75472d83f5d87600315aff08740458a568100d440770054cbb57b26c10430220b2359edacac9121e3f98d4a43a0e7c0b24960b23841806ba1c25be12055102288ce40e7c152b9ff0a670f8fbde95e4c27e027115087c17367f35602988037f1623077b1b356eecefe103741a39023d15077e1e175cae48bf0a770d1d219bd1f9ce98fa0a7117022872168d1908130b770f043d6fc2f9a359890d0b71151d05408841f6b43e6b0a7613130e0a622278ecd9067f111516072807680c111ce7f8d1104310e3edf2a35c8d8ace4dc186f5ec830d68e8e4fcc0650f7b8de4d071080768edfdfca22a870b48eef9c181e0ef8db826790847f3e7cf93b75ca10b7be5ffd549e2c783ebb2140b47daf8ab56af4b81ffae1d0559f3fea422185be6f3a30337a8a759b81ff4cc9dd061c07ef0c287a8b4f40f6fedc3840de4c769032a0d2e5d87e7096fecc68de4a130672b137fefdcbbc47f2dfedc65eec16cef9c080e30400974eac59bbd2662043b067be4dd68092b076af8dc6415e6d4077be1d875fdb110056eeed556c8086fe2d45aab334fd41447ceb75283efc776df661704267e17e6c85c8a871347cdb72792b0011802eaef7deb8bc067f3a7131b47ccb02f71eec748c672eb80fcab2a28780fc48acd5996a511f49d1747cbbc304db515363a7bde4ff8dc3062f2d946ce7affb41547cab93b256af3c884db4fa4a41dd390a6f4f572f01347c9b41107275aa9ebb7104cbd00353379d26f1247c8b10311fdde46bbe882c457a23f5eb8f71547c7ae19f7b001e8d365173d29205baae6cd357fd41147c6b8f7c579e2c679a1264eb1e4b509c11447c593f5a53d5168120a371919e4a8ecbd1ee7d11447c485e0bafcae20588dbad0680def94a20cc3740947ef82cf9fbb10e1b40c7bfc86c041f7bf13e1a718161647cd8bdb4bb7ecc1468a36ed56c2a5bcecb8feb6e7c90575fe85dc2b0a4484aeab4d221872c15e067bc09bbb12cd0f71cc9fb1f3b2f8a2ebfc5e771dfd8a0971cd9b83d174f2a0ea0477d4661f0971cb6515fa9bbb08c90777c86ff7cb5377047bc869e80c5ce75cdd93d8216ccd2b75d91249fc5bf54329dca98d3de748d3b48dcd82d70e6bcf6bdf76d03e6f7ffe93cb45aa076bce6ffd4090b5106bc372da1b5972d984d8478df9c836290a6ac84fa71e1ced65c7630c48c14fbdf0a525143544a3080e55fc79b4f09ba8fa75c9acfb67e10a70df428df25a62d456740d7bc3558eb91ced73ac1ef869e5067bd35a8c8bb0096cdc73630bd91d63b4076ad14b61fa9c9f0344c614017f0a76d6314092dc2d2b48941443d72b5e64e1b251cd60d67aa6e3a8a2e19a79d30e74d62f5c6cd4350a3aa512e3b4d6804a46d2243c4575adcb839c1a183aec647341e71bb1fdaf64fafe0559ad0cd5b499e387792456a4e3d12f2eaa8e267a499f11178ca431c3a62db568e0deb52bf3e8fa3193a93451942e7ee40470c93636047ed53b3e1070c92e1444ef49eab8c17eb4c05e7bd7067fdb2a28ea72075fef343ee17a510a7fa511c1a3e8acc35281056fa40aec8f0c7fa718d378fe81a80fad16d0194f862dd959e00df69f72c67c9bbcdc3606fc9e7ee70ef343950c7fa107f95074fd79a406cb37154d8b3bf31a087057e038e0614de4136671bd44ed09174d8837fc36c1ad90fc7bbc4cde5282e57b5fcc5aa8a0ac01370a7fadf580fb7cc05a7cb2064885d19ee70a0471beed890468bef884046cb5ff920476acff65076eabe478d92134087ea6f576abe2b2a30472bff470023bf2056bbecd51730c7bbcc9494275df0b3a09cd3f096da7ce37062a38e89a0b6cbae22128ef854bd510fc0868bad32d1dbedb2b076fbedb05ff70c2036fb1d70779b7d807abe2990574b3aef5990671ababe7986f0471aca6f70471ada5f80375bfad0975beb2c635fe6ed83d0c7581b6e508bbcc18919387c1047b93b7b00360d3ed057b91b6b9b2057e9c8a8eae04688c8d8f087e8f989077b7b384067797888f4721053887817aec077b81867eb7b790086c989178927582340475989241066e89914b476a065f826ddfec9005729d69adec047a806db2147f957993a2dee17d99516abe4c100aaa8dca1dbb04709471bb066b91668372cb0147086895698e56723ef2097b94726aa9d9e973c1036b84410b6a9248768a500703a4afcf0b79885941779a7f30f63deb0e6c966e445e5822f24c66814f494d064b8e425123e50c7e895c2d21d0f15f7521ef41096b8955380a8d2b05b50d6c926f3df8486f9f39875c5f1e05598c4c3ecb0a7b97201584d7f05e1cc705716eb181b60a2c33f18fa27abf2d203e02757a047e6ab7a5127d6ab0ab90628e6a05b0887bb5644322fe1c127c60b59078bfa78b922a083ad85f535b5f0d0a6d72bcd5587865b09a280e465c818d027ca3682c9216b00c12067b6080728ea1055d7b96669410556b84726cab9c4b2caa4324d3058745156d7f8d245c6a9a2c196aae39cb07748e729c5a0eb51f4d62894e5a3fdfec444e622a4c5e34240553147f9b2bf28023e617ba764b34295b6593422df031e66d06561c9661629e348bfb22e729e2163a900c844239b3268d0f6b9814353b0af1155a6f921b3d8ebe69bb014822f80eb583442cbe5f82146d7b9f7b396a9e3ec0104cb268896014a099521c0a6d649b76de3cd4cc169c0e464a5cafc10374e5d2e04b128f59066b6766917a8f05606b738f42077c71688746097f0e7a747d9b6182f60f727e6e9d28a280405c7d767994554353bc38cf2dc267ef85bb646f1b67e0f2f28a3c230037b3771373e80ada2371410279069f5c5627821b9b2e6b6a30bcc0361a977836bd1d5e0508292120203dc3084c0125107a786f400a43549d37b3810ff906ba608040595863741c868483a95c557f25a071d76fdb16c8224d61237100b976480192039e04644a3aa06c687b48e20541f329841d6f31becbb46d32237aea098ce56a91147a7a505d58c218d417606f658629e8fe12666265097a7d5426bc09227d5a067a2b1e13914a087f7b5a07dfb3a8b308687e433ebea33dc2012702774f0377445a096b464bd54e106e4d090e475422e334ad9e992be1068609cd0f47473fee0899399e22ea0f6b5c8f1b0c744929c4e517ed01769d0e9f127f4239fee9135520f1377c775f377b59e333077f4d25f1cfa6b50f7c4c20a4b18a2c6d94059b04950a7c0a7b4536bf8634d0eb36a6066b5c32a06795037c4332047642068d076846079d20a78604704006900b6c551e7240626b675f179c0e7942036a7023f0e46cfd094514590473570d690b6b57154f10b3a84237bf6a046b501940077f500a66e230c022305ef635efb106ce6fae39d8c9aa42f66f8219cf5338e5f160879ee266f0963e1eeb087f52f118c1a4904f0e4307d47c8d7d317e848793f52922056b49e0349c013e077759f9237536da04526fd835096b49e8ed20af931e4d026343046b50d3e3087233cacccfe11e6c077132e9d9c1a987037523dc066a26cbcb8622077726d9fb527a42127b24d8a47838966375398c3b8de2f1376d54056f2fdea95d067022d48222bc022a2c0a297db4815e3fb5693e88047e25a670087e22a76064ee175e04805defaa0a6b25b3440b7879c6b4890b6b26b95ccf308818410065047426b456096b38b249f1ba41e50603792383066b26963d8d3c097f3693199ae0093b8c0a2b63d8502e67c94d7ee20f5b3a800846f5ce02328e1d47cad392077533810a2abe5811703686d2057c36a44d160399193c8a13290f70398ac0123b9cf6f7ca6f54e710370c70388fdcfaf7f4f5e10b7ff80c7f3f74611355d59bf60257d60d7f3e777ae3012eab6214710a48066b3f7556c7d70a7b326653c8b2e8f70d3f127f3b7a06a05cd66967cbad386a48b348ec170a7929702687252cb14aae0b791674336474da6e5baa660e7f046c217e022590e2ecebaa7c1d074810730355b36e0a7f066b343081e4f0d0bd046c0c46ef087b0d47f8e21032720c7b0e4be7c6a961325157a3520f7c0e5efede97e5cdb2386c0497df9005740d47cdbf0c7f0c40e5850f0042d4d368350e750b40e86836b93d59239cf2cb640b7b195ea5681c275cfaaa560a4c034aac5085630f2eac0c770336b7259ec699f51a1f3f0b7f0b32b7052984102db10d076b0a3dafe00d03086b1539bbf1ad54e2117f1424abdc90d782c78f15187f190ce5f003751b3a087f1623540852a63909751b3572f0f3e5ebf60a6b143055b6b37bf8f0d9056b131058d1046b0704570d7515042984ebfdc781ffde6f2709711702287209b03030056b0e093478042f490318087e13191f1d6e2c780a7e12140020259df6b9240b7718180ce7fff5b415102d0c7719e7f4f2b460c893db4ad60c4cf2e0f0c1690a5a9cb0f841094fe8e6fcaf2d9aca8f074bfbe0c089ebc0084be6e8c198e366850a5bebfdca6debc899f6bc0b4becfb9144a912a9e6a83a0855d2ba88357a000c055ff2f1bc0f0a54edc48c1efad068140b054cfcca8ef70655efc186ca7e064ef9c292ac26095be3dd630d2f4dc2870959fdd3621de1d865e30751fcdf68cd82270848eed542d96e07300a5bffd141a43f429158c40848fda14e83e2d9730852fdaf278cb80e1f0948f2b5297be7d04fc40a55c7eb1a5aa50b302375094ce2ee1d2260a1eca60657c686202e14065ee2a1040aea0659ce9c32dc860c59ebb5e4c02fcfd144b635580a4bfb96ffb03d1f4d2233095bfa90ecbbe2ab374f0a55c5b5eabb9159c48bc901340a7ffb9af15cb6e8e75fa7066beb83d62d6904439bd3970138097fc7889dfbb3fabfe1067bcc908dc074096bc17732ead75295800b2b943349abc5e24c9620aa31259d2ae0c14c6c0ec2609f44e4bfad9a7803dabea80e9a637b0c2be7469d0d218373711e20dba6aedae40dade76d9e00350a238768f5be1bffb40f940b6cc756d5bfe8306ed02c7d09238964c0761ea4def50e7fcf6cff66d1245d73d493d84dbd094fce79e75b96b3f494105bde7ade24592bc684c871a0e3d736390f7fc85686090dcd67c742f86de4b000047dd847bf087fca5d89ed9695ef114ae46eb6d35a64f25a6e13d3255b9f86a71475de4abd993af87aac01de68ff85a8e0bfe9a918176fd7569183b73025d4a78da119ce8cd536071fca0debbb1c6bc7426c45cb3c4496c5a752df20265c75a05ac85a628b76061fce3e046dc6577e0a71d65b45d64e62d448613e30ed720cf6debd5ebaca8cf6ec1079ed9c7d686b847e6f0b91254db2e64cb18d4f30b626b79cd1fc9d357f4786af873743e498633353887e1792fd34c1a535469f7410d6e560751ac9829e4213eb88181b2280660058c46f4e93b46be1971b5cb537dbbcd6fd90152b4f81aad66228f99063614b117bca2c5575e78210e96de075aee387b5ff0a6bdc386971d03f0b0bb40b7bc835294163dd97b9d634136bde271c255f7baa31ce406bec7fb300d9282f097bdd393f0fe7adf0b4047dc53f070e77d0370cff64f96af7909d9b8a6c046dca08132060b81dfab4fea0de528d8990e7e766a5c21fee75cf19f38d8761a3b9f99aaec10443b911d601600d7bab0afd7efc05fa9869d56a8d0b7fa107ea5d6ff97ab53bca056cb115db2d0d7da819cf1cfa9c87c64abd6bfe804059853e813f8637e17155aa8bcaa693ef2696d5b8b9bba7a14991fe50409a4666cd3c17829960a3da1ba5b9db2fe9352fef4f3c13f49854f3966d9662a27151d10e79bbf2b5fa6bcb5642a005de19c90168016a077ea4f9a981a013024692012e0c7ebec679df283315a2de846f0327bea4127dbefe7186a8cc4a9ef60efd77de35e0818d086ab4d4789a68cf23027ea20e47b1de4e4e62f43b370ff1301da10c47a6ca32183e38e5b19769c6076ca1f13d3ce393037cb0c20379bed10176017e096baea1f29580dc05cc016c0979beaeff7ba5c63ef90a6cb4a7f9597aa8f040101370bfbcc3313409be8fc72112b2ed4e230ec1310c7cbaa7c638ef4cce38109b8a087481bbdd0db5dc180a6a84abace37bb9c238e80f7994bda7c00ae28e4a66bdd02202ad096b80adb3a4e358a4d90a6b879184b8baf3ee6cbd107c809083967488a2d339f47d486f904a0a6894859164bbbff829fa077a869989437caa096c87846babde447d99086c809974a0bdd1f50a6c839579846f97768810077f9b8e6d62b7d10b729fb940466c825cb696810b688177dfe99b69b44d609d0a6c876ba6ef482c1595c50a7d996cb9f21ebdadc00401750b6b887eab848d5b74b9d7f80c7693608374dad45d2713959a056a8774bb47097e844d98414839e9600b47aa6863b9cbe377926814087b9a4b74898b75320a6c9e487c8f412506bdf70b7d805d41779a7a31fa3deb037995400c7f9f446b24e566b9958d4122036d895f2c769359281bdf2f1ea1a1fd904d10241420bfbb9a4e5c06d34136b2a1f1873c514b02d434ff2bff2ed009581d0b7c92571af9480acc149c4a08688c512bdde061870428cf7157082830f582b422c600022931057c67aeb3df05766ca1ada80b7a6bb7a0bf73960d1faa8e0a7a6ab29b5ea7b2ad9379056973bf9f64067974ae9c55220968699568a1b4886bcb096c7dbb7e8372932043063e7f9d7d67e4087664857f7d5c8d310a2c3ed6130d609bb6181c097e68a4553ee02cec71086861854f2289b70a0e4042b50b097b8d03c10475b8759a04485fae1a106b74748594422cdcd9f2652ac4197f560c5b7d6a966b932786dc4b2ca310796377864a5138cfd8f630e38a607c7a046b7165910e6b616f8c23facc086775649928b5107972764c8558197dbb22ed1b9f39a5ba0376786203292a2d13707872415012409b26b09c27e5069a6e4d3fcc067976547b3cb9077b6f51542593320775795322c15804086b75432ad6317259017c13707e5f3bbf931fc1ee1a7f616d9a17c8a89d270e7b4854049725ed14e432fd11784b0a6c4e4d106f983ea9862c096c4d491d4c29fa16b8076c4c4ae5511c69057e4b31f230086c4a33f90598088a077b4a23c0e730c1077b4b24c8f00e78016109794d3095bdb204708f0329186a0971580fa6718e18669903291e6a0c7f4816ad4ee456f76bef0170097541138031ac8434ce0775401c880c880009755f1875636a65654f077354096b7236f20573570d6f4a0e6e521b4b2ba1a84600b14b471594086b5115492f667a40016d01740179107b57e424a36f6930fec2f7ab736d2b66056d5bd92f840c6b5ffe0c4460422090195cd2032909a0126a59fa1440ee219a025725bb8bec0d606920136a58f7eb38adbf0e51e5114b74269621d487350d714ddbe10b6d401354d231a07714475acff61d28d796980d52d2f0fe047b1d58d4b70c712ed1c7eeed096833e5ad18107737cdd9c1a19ae316990b6b67e90a210f4723cfe9b97c4cfdfb076c56044f18154721d6ca8023e28c24bc61693682259d0391f9f228047e31ddaa097937d1a7742ea7716f0e4625d5b341f71232ed86095ce67901230e472ab884027564c6c0a77f54fff6114726b29c0c3eb97f32a30070055d49e3ee0d4728b1707e31b8388c2895ffe50a4729b27855ef305f0d38077722ae7523a056067723be4f056b097720ba44e1328b05400b7721b55cf4ef004cc7c8990a773ead4cddb25fef074d09773f942ea46a50cd9c0b47218d3588388dff0420f60b47319e2e9eea203890f8df12773a99007631880b3fba30a9421e2d8a067f0c6a309d1e40fcf81f05921d56076c3f9f1c24ac49066d2799ee016b21792889e0143b9ceecdd16e09fe5a2580e3b3de95d2ad3c296b1e376d5dbc2c8bea046b309bfb0e71347445035fdc82f62d57d1a67e096f296258c01735a47f074a397646c7ca87035f185e06753b7a2fb9590b6c30443f9b1737965fb57e057b0c7a346d046c04601716473d7d0d63a96533bb2b6e3589d4a67f270449d2bb3e057e066b15390d6b1153f1024eb7662542e6fca814470243fec31c28760c68f2d573238b07036b17590770034bf1c4b27c0c7b0843e9d398e387af2f7b3506700d50ccb64d07500c55d58f08100b6d1a5cdd7326943a672f90127c0e58ab781c3778d6874de3edac4df1de8305680d4dbc5d0f7a182bb434b3cb9dd31e1c3e92d5a9086a0b20861e3684180e6a0a2f8ef30b034a9645c9b03f5c04751f29930b7b03359bd093c691c98d03057b13376237086a16337b1559b13e09711a2f78e4f1edfcea0e7f102a74feb76ce3edda7bc5de9f104703105de562277a3c621f271c2060270b6a12124ba549bd0858c0d208572a2003a0c8aa8a0b122b291a5208b038384159097d14133779efc99877087a0e1a0c569556f30c3e23040229693769fadf9c850c2722091d012a91eba02f57f50971100a1af0e8c7ad0519710cc8e9e4b449c399d96dc4a1ffebbb19cacc780e1b0a3d440d5af9f1f7d04b014d89e7d9770e0777f1fcf2a42a870471ece5d20e7dedeecc91a663ad38653c002b5b0f6df6ffeb7cfdd484ebb82bf5ffa64f0447e1f0b2026de4036bf4f20f6ee9cd891becc5693e1e1c33578ae01e77f9d080f9a666633057fd220d2447d771fdea6666f59173c976f1beefe52777fadc9ddc7f5de9dd74e9df7dc6b31d0b195aacfaed0e5bb900206f38cf79a5d7596018c27783107feec5aca9336d2d2178072ae3cd6011127fe9c15216224af7b33097a10a2312e0d560094cf4c27539f9c37ef02a5befd875f7a6443149d75fa73077462a2041da276e19f5b451ebc7108bdf74c03fcb3f1c64f38bcf41bb0e70eeca6cda69392d287c1ffcb5380c7bffd348a33656c374f2a92f1468e3af4784f9c166e0702035366513f8dc5f92870e6cfd882d9db4031424f3c271f38d076ef2ab3f76c5d30d71e79b2740a5082b356ec95fed2057f7a43b247aafca97c74edbb41fcd95b3e48a7bf0d8b4ffb6a0bde2de529c80052ab8e34757037af8b02970ecad0ce6ee5caedd780705723d42abf4d92e34d347b8a9b53c313647a451c30e36dc343d7f66f0952370eda8f5df35a89b5ebc3248f3e2ba0ed76314827dd32508a2ecae06f894d892876b582370ee94e0ba62102e1f1f0a0b59e0b4febe0ae99b5699b7ba9ed92f4b61ede503903fd30a2aadd6aceabdf2610bc60329add60329acda033dfdce0235a10d7bcf99a51262667493305ae784804159e3bb9732d490ccff7ebb8b2c2d2629f358dc88cb52d39d31dba13d0ef589b7e980a3eaa311af1ecb579e96b9fe9ea8c80aca2c5f9f7f684bef894bee814599560947c193b3e4aef4a5f703259ec2022599087bca6b0aef90a10f0368c97d0a47f868fe831de9a410cc", []);
 
-global.navigator = {
-    userAgent: 'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.100 Safari/537.36',
-}
-
-var e = function(a) {
-    var r = {
-        exports: {},
-        id: a,
-        loaded: !1
-    };
-    return x.call(r.exports, r, r.exports, e),
-        r.loaded = !0,
-        r.exports
-};
-
-var x = function(e, t) {
-    Function(function(e) {
-        return 'e(e,a,r){(b[e]||(b[e]=t("x,y","x "+e+" y")(r,a)}a(e,a,r){(k[r]||(k[r]=t("x,y","new x[y]("+Array(r+1).join(",x[y]")(1)+")")(e,a)}r(e,a,r){n,t,s={},b=s.d=r?r.d+1:0;for(s["$"+b]=s,t=0;t<b;t)s[n="$"+t]=r[n];for(t=0,b=s=a;t<b;t)s[t]=a[t];c(e,0,s)}c(t,b,k){u(e){v[x]=e}f{g=,ting(bg)}l{try{y=c(t,b,k)}catch(e){h=e,y=l}}for(h,y,d,g,v=[],x=0;;)switch(g=){case 1:u(!)4:f5:u((e){a=0,r=e;{c=a<r;c&&u(e[a]),c}}(6:y=,u((y8:if(g=,lg,g=,y===c)b+=g;else if(y!==l)y9:c10:u(s(11:y=,u(+y)12:for(y=f,d=[],g=0;g<y;g)d[g]=y.charCodeAt(g)^g+y;u(String.fromCharCode.apply(null,d13:y=,h=delete [y]14:59:u((g=)?(y=x,v.slice(x-=g,y:[])61:u([])62:g=,k[0]=65599*k[0]+k[1].charCodeAt(g)>>>065:h=,y=,[y]=h66:u(e(t[b],,67:y=,d=,u((g=).x===c?r(g.y,y,g.z):g.apply(d,y68:u(e((g=t[b])<"<"?(b--,f):g+g,,70:u(!1)71:n72:+f73:u(parseInt(f,3675:if(){bcase 74:g=<<16>>16g76:u(k[])77:y=,u([y])78:g=,u(a(v,x-=g+1,g79:g=,u(k["$"+g])81:h=,[f]=h82:u([f])83:h=,k[]=h84:!085:void 086:u(v[x-1])88:h=,y=,h,y89:u({e{r(e.y,arguments,k)}e.y=f,e.x=c,e.z=k,e})90:null91:h93:h=0:;default:u((g<<16>>16)-16)}}n=this,t=n.Function,s=Object.keys||(e){a={},r=0;for(c in e)a[r]=c;a=r,a},b={},k={};r'.replace(/[-]/g, function(t) {
-            return e[15 & t.charCodeAt(0)]
+    function p(t, e) {
+        var i = "";
+        /^http/.test(t) || (t = location.protocol + "//" + location.host + t);
+        for (var n in e)
+            i += "&" + n + "=" + encodeURIComponent(e[n]);
+        t += t.indexOf("?") > -1 ? t.split("?")[1] ? i : i.slice(1) : "?" + i.slice(1);
+        var a = {
+            url: t
+        }
+            , s =  byted_acrawler.sign(a)
+        return s
+    }
+    let value = get_as_cp()
+    let _signature = p(t="/toutiao/api/pc/feed/?min_behot_time=0",
+        e={
+            category: "__all__",
+            utm_source: "toutiao",
+            widen: 1,
+            tadrequire: true,
+            as: value.as,
+            cp: value.cp,
         })
-    }("v[x++]=v[--x]t.charCodeAt(b++)-32function return ))++.substrvar .length(),b+=;break;case ;break}".split("")))()('g,$@drbms!l!n Иb/s"g,&Usz`dlms#g,.}jcb{|zFbxjx}~ms$g,(lfi~ah`{ms%g,)gk}ejo{cms&g,&qnfme|ms\',!^s(,)|doikgauus),,jabSysaWzrrs*,(|fY~d`hs+,&jbfn~cs,,\'nfmosCks-,*icmM`ttSgs.,&eoi{Ks/,)ziy|f~vs0l#l*ms10s2yWl ._b&s o ]1l l Jb<k$.aj;l .Tb<k$.gj/l .^b<k&i"-4j!+& s3yPo ]3s!l!l Hd>&l!l Bd>&+l!l <d>&+l!l 6d>&+l!l &+ s4y=o o ]7q"21o l q"18o ]4l 2d>& s6{s5yMo o ]8q"21o ]2Ld<l 4d#>>>b|s!o l q"18o ]4l!& s7yIo o ]6q"21o ]4o ]2Jd<l 6d#>>>b|&o ]3l &+ s8yǽ,`*&3#-r:\tt}a6\'%`b\rf\nkop\v\b3%\bU-(\t1=%;);\r\rO?.>/\t=s!$ s"0s$l o ],ml$3+d">=kÝl vo ].mxl$v1+s$[!cįb&@d<l vo ].mxl$v1+s$[!cįb&8d<b|l vo ].mxl$v1+s$[!cįb&b|s#l"l!vo ]/mxl#i%9tz40b&Bd>[!c+s"l"l!vo ]/mxl#i$5j40b&<d>[!c+s"l"l!vo ]/mxl#࿰b&6d>[!c+s"l"l!vo ]/mxl#._b&[!c+s"jｒl o ],ml$b-0b>kÑl vo ].mxl$v1+s$[!cįb&@d<l o ],ml$b>k6l vo ].mxl$[!cįb&8d<j!0b|s#l"l!vo ]/mxl#i%9tz40b&Bd>[!c+s"l"l!vo ]/mxl#i$5j40b&<d>[!c+s"l"l o ],ml$b>k6l!vo ]/mxl#࿰b&6d>[!cj#$!=+s"l"$!=+s"l" s9yĶo ]%v,-n|jqewVxp{rvmmx,&effkx[!cs"l",%roc|a.Pal",&nbanb@al"v,*mnxNaadtjg[!mx$"2d[!cs#l#,$bjhs,*;?|u.|uc{ual#v,(n`fgXhv{mx$$龘ฑภ경2<[#c}l#,*ycmiaxR}ga2al#,+xdby@vwav`M1al#,)zbd{Nacc,$hlkbal#v,#bvfmx88802[%c}l#v,&uszfanmx[ c}l"v,)}eOmyoZB]mx[ cs!0s$l$Pb<k4l l!o ],mb%^l$1+s$jl  s:y:(1o ]:i\'1ps9wxb& ) %{s /  s;y>0s"l"l!o ],mb<k+l"^l"1+s"j\bl  s<y¶o ]!n s l vr\'setDatex1[!c}l vr(setMonthx5[!c}0l v,1vwg@|{rbvt~S{xlEUmx[ cb-s!l vr(setMonthx;[!c}0l v,1vwg@|{rbvt~S{xlEUmx[ cb-s"gr$Mathvr#minxl!l"["c s=yď(ąo ]%v,-n|jqewVxp{rvmmx,&effkx[!cs l v,*mnxNaadtjgmx,%rceoe[!cs!l!v,,khzJhew}g|yymx,9N_Y[QA{ECWD{WCILLXN^rGAV^[!cs"l!v,,khz_qcs~qasemxl",5@XZYJQ^XBHZnemq{rceoem[!cs#l!v,,khz_qcs~qasemxl",7BVT[HWXZ@rdlgawcuw~oikam[!cs$l#$!/+l$+ ) &{s $   s>yĩ[ s o ]&,\'wd|mbb~ms!l!v!k#}[ s"0s#l#l"o ],mb<ké(Þl"l#ms$[ s%0s&l&l$o ],mb<k\\l$vr$itemxl&[!ckCl%vr$pushxl$vr$itemxl&[!cr$type[!c}l&1+s&jￗl$r$name$ +s&l$r\'versionk3l&l$r\'version$ ++s&l&l$r(filename$ ++s&l&l%vr$joinx$ [!c+s&l vr$pushxl&[!c})  l#1+s#jｊl vr$joinx$!_[!c s?yᱫ,)deec~~nst,*yjb~#|uc{u,%vcuao[#s gr&Objectn s!gr&Objectn s"l %s#l#u&kās$o ]%v,-n|jqewVxp{rvmmx,$wugi[!cs%l%,)`deiF[]],-`cb}|~yx{{tpal%,%vr~dlm,(nfd_dtj,$37val%,%vr~dlm,*ldbyHn}x~jl$ao ]%,$fjb~mv,+j|}katRzzxqmxl%[!c}l!l$l%r+offsetWidthal"l$l%r,offsetHeightao ]%,$fjb~mv,+yi`ayuRzzxqmxl%[!c}jＹ,+Jbiocu1_|zz,%Dtnie,+J~doc0S~rw~,,Mgn|1Zvvgs`,(I{cj`-C[,,Mgn|1\\rfgy`,5Td~yu:Ishp{EEnpdHDM,0Qc{rx5Cyqzuy=SL,8Zpnhho{~MtFVDtIGY\vaB@@,,Nbad0P|g}dcv,1S}|xwy8Vv<NjfLD,\'Dieci~d,\'Didhyel,,Olcmbxs3Ytb,\'Dmg~~~t,.Mj~egam5Qxlqsx,2Qvzacea9IxtrqsBNMH,*Idadm/Cp|`,-Nabyr2@u{e7UJ,(Kfdxcao|,\'Dg|xbi,+Hcx|fuc2]qb,(Ohxjab`k,&Abfl|j,\'@mfxlel,)Aogzhzfsp,.Fj|gwg}vw7V|o~,&Ojxhi,-A{lyus3Vgppm,2^fw|rv8Z{wptymAQJZ,.Bzsxvr4Vyykvv~,*F~odjn0Wsk,-A[LYUS3SGWY\\\\,2^fw|rv8Q{uxjlvTHLD,+Gyngkq1Arzf,6Zb{p~z<NqSvZT@QUA]OY,3_avsy9Izrn>JNHAL@@,4Y|uewju}h=M~NRpAWOA,&Khfhid,0]~||`lfr8Zuioth~,)DY+Kbzgyr,*GX,B{{|~}x,*GX,]I`dy{p,7ZK9H~zxlzNBGwDHT\bzOYEK,-@]/Cp|`4Fseq,(EZ*Xigi,&K^Z@KO,*GR^DOK0A@\\,(Xhfjxd``,1Asuayw9VrrrjfPD,+Xijaj0A`zza,,_hi`u1Apf|fc,([lmdi-[F,.]jw~w3A\\6[q~ro,1Bwt{p6BQ9I~qt|pLE,/\\uv}v4@_7K`wysq,&Rf`fgj,%Qojmz,/[y|w`4[s`8Kuv}s,2Fzype7V|m;Nrs~Nrp,,Xkmerzv`5[D,\'Qm{njbl,)^cekigawb,+\\ecikyu`4\',+\\ecikyu`4&,8Y{{u=SK\0bMM@@HTMM\ngEJF[,4Uvws}tc;YsymAWGGics,0QU]QQ5UVKUUU<MLP,.Oksw3Stdvuvt,2SW[WS7_XHZQRP[\0qpl,)Hmnbnw/VS,\'F`hxdbd,3Rxwselli;YejmA`LHA,/N|swa``e7U|~rip,(Iemn~doa,*Kfmwaau1PG,3Rypd~{xt;HdnzWSKWAW,=\\szRHABJr^XL]YEYK]r]]PPXD]],.ObucFjdp6Z|9XO,\'Ffmkgy~,+Jbj}n~p2]qb,*Kek~oaqDBP,-L`{y`gv4Zz~n|,)Hzj~ldfdp,.O`}w3W}wy{|hb,1Pbcxp6Twuui<XspJH,3Rdezr8J^;[rjwIBmAJ,2Sauwt8Mckyn{kTHLD,&GUKAOY,(I[DD,]\\@,(I{x~-L[,,Mx|`bp2Pz5TC,0Qgs}`Rwe||:Yw=\\K,0Qgs}`Rwe||:Vx=\\K,&GQMGCY,(Ipdlwn,%Ggilp,0Rp|txt6Dyw}zq=SQ,+Imce/W~f{}v,0Rp|xSzbqz:Vx=\\K,+Im~ejbg{xp,4Vte|}klrpq{?oMFbDEB,&Df|hdl,)KkmciLxt,,Nl{jb1P|pzx~,*Hjyeozc1+ ,\'Eisedgl,\'Emef+AY,%Gcjjf,.Lj~vgzua6Us9XO,.Ljb}{}4Fwyk9\\Y,3Qqgz~v9Izrn>YbfFIL,4Vpdyyk~;QI>\\OOFFJVCC,2Pvf{~vj}\\zouwpN`w,.Ljbzrfq[x|9XO,*Hbk-Mnc}}},\'Eagdn~I,.Lcqryrpqse8PNX,-Obnyc_w]AU7LM,)Keoccg/\'#,2P|pzx~8.(;SqzlTXNF,3Q{qyyq9-)<Ns~LMABTV,)Keoccg/]E,/Mu}}}5[C8[vzv,3Q{qyyq9WO<^qqDDLPAA,;YsyqqIowuIT\\LX\voBC_BTA@QQ,2P|{~e}u|;Ods}OM,\'Eg|foi,,Nok|tk3\\txs,0Rcswxpo7Pxt<TJ\\,,Nkbu2Qp5TC,.L}yes}z|u7Zvv,(J{ejhzov,-O|`gp~}t6Y}n,,Naxq}~zu@FT,/Mbda{4Fueqin;QI,.Mn|xt|f{vv9\\Y,*Ij`d}{1_G,,Olbcyv`rd}se,\'Dignj~l,0Spa{{Ygv{xy=\\K,)Jkxxhbcqc,\'Dmg~jy,\'Dmskebh,(KN*Dahin,(KN*_e`k|,*Icmaemp`w,-Nfn|zp|ugr7K\\,+Hdlbdtdagqg,,Oeo}|tad{gb,-Nfnbewa4Wr7ZM,*Icmzjb1PG,\'D`hhi,0Syw`}{^LZ:Yw=\\K,\'D``fgi,)Jfj~h`k,3Pxtdrv}uu<^qqDDLPAA,0S}}zgaseZu{xw=\\K,&Ehkace,*Id`b`aq1_G,*Idb~zn~e{r,,Obauc2Qxtu|,+Hc}~jba~r`p,2Q|desehu{oy=YpTIK@,7Twij~nmr~TDdKQNNK\thD@I,8[vjkyonsAUGcJROAJ\ngEJF[,2Q|desehu]thu>]D`w,&Ehzkog,*Id~ign0_wd,)JeyhdoZ@R,+Hc`jbbf|zp,\'Dg{eeiy,&Erkbed,(K|xgv-C[,(Lhe\\h`g,\'Ci|zcec,%Agqam,+ON-BLT1Fvye,)MOGENG@EB,\'Cmggj~f,(LOAje ]M,%Aocg},+Oeabj~xsFDV,#GMK,)Me`Oeob`p,%Ais}d,(Lf~~aNfj,&Cez`gj,4Qqavj}szr=M|RHRWlrd,(Meo{dl`{,5Pxptpis<,/.\0wKUEFCj},,Ici}qgwag5[C,2W}sgwa}ki\\sivvC`w,-H|nc1P|xq6^LZ,-H|nc1Vvy|6^LZ,.K}qb2_}r~c8PNX,/Jbpa3Ypr~mt:RH^,+Nyn|`cxsFDV,(M|zci`gn,-H{xtzu5CTYJ,)L_YC^ZF\\T,.Kweq !%6U|9XO,(Nhdl_b`h,-Kkcyi2G}az~v~,(N`rnh~w|,&@HF]CE,2T|{az~qn;QI>SIFJW,%Ciu|l,*Lymce]etz,*Lymc}fcrs},1W`vqsdz/++;^qu?bu,*Lyih}fqDBP,0Vcwvgao{}9Ixntnk,0Vcw}w}6D{kskh=SK,1W`}RycpPNX<_u?bu,(N{bxjk},(N[__EJK],&@r||xj,,Jxzzbp2Q5TC,,Jxzzbp2_`5TC,,Jxzzbp2^p5TC,.Hzdd`r4OT{s9XO,.Hzdd`rVywts9XO,(Ohhyebbn,+Lmabfqcv3VA,\'@i|~jad,)Nonvl._b~,-Jk`}tfa&&\'7ZM,0Wt}~qad%+(:Sj=\\K,0Wt}~qad%+(:Wh=\\K,1Vw|Gywu8.*(<Qj?bu,2Uv{Fzvz9-+/=F]D`w,$Clan,)Ncg`-]n~b,,Kdbc0Bs}g5[C,6Q~tu:H}sm?mu`KKBBFZOO,?XIMNwDHT\bd~\viUZs^\\WQ[ER\\xTPY,4S|z{8J{uo=KsTSCfJJC,>YvLMpEKU}E^YM\rl@\\Up[[RRVJ__,%Bot`h,=ZrpUBGPP@Te}\nnTY\\Nr]]PPXD]],&AH\\AKF,+LCYFN]1P\\XQ,/Hdvj4Zzs8Jnbpx,+Lcxjv0Bf|aa,2U|aqo_yw~osrrzD`w,,Kb{ki^^@`5TC,2Uf~tdvlp:H}sy~Mom,%Bskad,(O|fbaNfj,\'@}gmxye,*M~bj}zxRzv,+Lycz{y{3Y[,0Xpwg`pxd{qm~uq{m,3[ugzxo9Itptz?iUCOMF,*Bj~gawe}},\'Omh~ci,(@lce-]L,(@lce-ZL,$L@JQ,&Nbzhfo,/Gyvz3@zarj9N~di,9Qsi}zwqOiBOP`G]BBO\r~]_,4\\|dvptt<PwqCIMtWIi,,Dbki|t`3@pnc,1Yg~u{ec8,(*<^p?bu,-E{bqag!\'\'7ZM,0Xdrzfb"*(:Wh=\\K,1Xcf|xc8TN;Ou{OV,0Yqzgpr.((:Yx=\\K,-D`lybww-%\'7ZM,0Yqzgpr.((:Wh=\\K,+BBNAAC^^R@T,.Gav~`~uy6Ewt{u,.Gav~`~uy&&)9XO,*CEXH\\\\DPFV,\'Nz`y^\\N,,E~e`}s3Dzbv,*@j`gauDBP,(Bhpq,AK[,&Lbfzee,&Lb{}oy,(Bfan~`oa,)Cboh.FDR,+@mokc0Sy3VA,,Gllj|1G`5TC,\'Li`fjl,%Ngn\\`,\'Liecekl,1Zs}ztrv8J{u{|s?mo,\'Li{~bgl,.Enewrz{6U|9XO,+@mxhbq|3VA,(Cagn~-[F,,Gbjlxxs}s@FT,&Mhc`fj,*Ad~d`aq1PG,+@~d}{u2Z@V,)Bx~bjzgua,/Deagxpd7Kzhrli,&Jfg)_B,%Igs`h,*Fniaoxquwv,-Ak{dt`3Szbqz,*Fnzh`f}1_G,\'Kaes^\\N,*Fbxeahbpb{,0\\xf{{rdvhq:Wuzvk,+Gcci/Yb~rzq,)Esoel`/RE,\'Jindnxb,+Fmdoatcs3SQ,3^uywnyu{v<NqG@Oik,-@ocwd|3Szbqz,&Kffnkg,(Ehxbkbbk,&Kfz`ee,+Fmejb1Tvxa,&Kfzbo,\'Ji{fnxy,+Fmyg|ct2Z@V,9T{oio?mupGWOW\\\tiJ\\DZN\\B,&Kba{sd,)Dob~ta/EX,2_zwgydwn;Tts~L@[B,2_zwgydwn;Vu{qGiGJ,5Xtjvitzi>QEVwELk]L,1\\{pfzex~m:Kt|ylp@,0]xqa{fyql9Nzu=Rz,0]xqa{fyql9Or{ukm,/Byr`|gzpc8@{Syt,2_zwgydwn;Et>]AHVJ,\'JagmGeX,-@gaw]{FK]]D[J,2_zzrZ~MFRPO^M2eYVa,,Ad`h\\xG>QmbU,&Knf`ee,*Gbbdaa0A`|,&Knz`kf,,Ad|fq|2U}mss,\'Jaz~yma,&Khllxe,-@akuc|3Zz87*),6[xvx:Wun?sNNJ@osk\t~,/Bu|x|wy8[{rht,$IJHH,)Ded`Oa}q,)Dxx,Hoyub,+F_-Bf~tVaub,)DY+Ad`lx~,*GX,]Cf~rz|,6[D8K}yo{qCDpT@ENIE^R,,A^.ZY1U|`}t,(E]*Nty|n,%HSTMF,\'J^)Hd`d,&Hfllof,(Fhx`e~gb,%KCQAZ,+Eiz}/W~f{}v,-Ckxc1U|`}tUM,+Eiz}Hez3VA,0^xstugw7]w}i}k{{,-Cgnwp`r4Fy{q},*Ddxhy`bezj,\'I[`gXyc,%Kfdh,.ALB1S3Qmbrv},+D`i.Lufffl,3\\xq6Rv~vrou>KEYViq,$Kk,\'Hfpr+NY,&IW\\@GJ,/@bxkr4Fwyxw;QS,%JUFCH,/@jYs}p|ueyn;^I,0@p~rwp6D{kskh=SK,\'Wiysyy~,)Ykyoecj~e,)Ykyxt.CUE,\'Wmnkxy~,(Xlx{iy{n,3Cqgfrll{;HtjsIOEiq,*ZnxdznR~~w,(X`i`{dmd,4Dywylx}~rxj?cIGQKNCB,(Xekrndbc,(XDcekAgZ,-]Cf~v^zA8Sol[,,\\ba}0C{p|tds,&Vh{}oy,/_bfvfWyswws;^I,.^]Y_QV@ZAY8U_O,(X{cxxd`n,+[XOo}~d3VA,*Zrxeohcs`,%Wgf~`,+Ymjk/Yes}v,%Wgqal,/]ysp|z$%&8[~;^I,(Zfi`{hbc,2@|w~artu:XsszzNRGG,3A{v}`}uv;YejmA`LHA,#Qka,%Wijig,.]n{zs4Xw}yuvz,,_l`{q1Tv4YSC,*Yjzbwj0]WG,\'Tklz~h,&Udz`z,.]lbxbg4XB7Zvv,)ZIYE]ZF^P,&Ubz`lj,)Zoyeko/RE,,_h|fvp2G|5TC,1BzvxysnNvvzri{?bu,([aoy{bak,-^f`~p`3Vtxptx,/\\x~epugr7_vnsu~,&Uoz|~b,)Zclboanbu,*YB@F]LBTW],&UneAob,1B{~dyqq|~;]o}IB,7Dqtjwu{wzDcQEGOD\boCSII,&UneZe,+Xe`]z~<Wk`W,1B{}|tzv8J{u{|s?mo,/\\{tfp|5Dx{rm~pq,$Wnof,+Xalbc0W}}`f,([gk{,DZL,/\\~t~4Gybv}rzry,&Uhkbo,.]`egw}}g6[l9XO,.]{qrqr`z$%*9XO,\'T|lkfi,\'T|ldhea,)Z~d~tl`z,&Usqefd,&Urj~kr,0Cf{`#\'\'7Zuq^d=\\K,/\\gxa`-$\'7@Zw;^I,\'Tqeljic,+Xucmgb~2_QA,&U~{}of,/[q|{4Fwyxw;QS,)]ohdcglq},(\\lfnxt~j,0Dt~fs`6Dyw}zq=SQ,/[u|bfg5Evvj:RH^,(\\lxfecoc,(\\aeenx|f,2Fauqcqvtzp=_mACK@,&Ruicke,*^YMGOA0A@\\,\'Sz`ymc,\'S}kgm,%Qsioh,)]}+Oh`/]E,3Gc5Urv9WO<^qqDDLPAA,>Jh\0bGMhrkFDOIC]JTwK@GWzVV_,.Zv`~Gcf|ql9XO,\'Rf`id~c,\'Rf`|n~~,4A{a}ki;_X>*oF@LSJ,1D|zbpdd8ZuuxxplEE,&Ss{hkc,(^hmjnb`k,$Rdhn,&Pnbhsj,.Xf~t`3\\txs8PNX,(^`y~ma[F,\'Qakghd,/Y|pvzy|d7Kzhrli,&Puagnj,+\\i~zbyagqg,\'P@@^EIT,*]bhh.Cqe{},-WovT~}eb7ZM,-WovYg~zfb7ZM,0Jpbu\\`{ykm:_q=\\K,\']iylbbb,/Uec{p|5T{s\\b;^I,,Vx|fsy2Vl5TC,(R^KocokI[Ȇs#[ s$l#%s%l%u&kŊs&l %s\'l\'u&kĻs(o ]%v,-n|jqewVxp{rvmmx,$wugi[!cs)l),)`deiF[]],-`cb}|~yx{{tpal),%vr~dlm,(nfd_dtj,$37val),%vr~dlm,*ldbyHn}x~jl&$!,+l(+ao ]%,$fjb~mv,+j|}katRzzxqmxl)[!c}l)r+offsetWidthl!l(md#!==v!k;}l)r,offsetHeightl"l(md#!==s*o ]%,$fjb~mv,+yi`ayuRzzxqmxl)[!c}l*k>l$vr$pushxl#vo ]-mxl&[!c[!c}j"j\ufeffjﻰl$vr$joinx$!,[!c s@ysul d\',typeofo ])d#===v!k)}l zd#===k#$  ul d\',typeof,\'egffnmcd#===k-l k%$!1j#$!0 l  sAyC(:o ]\',.}jcb{|zFbxjx}~m!! ) %{s t  sByA(8o ]\',,`bmn|Bf|ftqrm!! ) %{s t  sCy>(5o ]\',)`doiukkTSm!! ) %{s t  sDy6o ]!n v,\'`m}^bahmx[ c sEyJo ]Ao ]Dz[ c&o ]Ao ]Cz[ c&+o ]Ao ]Bz[ c&+ sFy`o ]\',&udzloems l ,%roc|amo ](+l ,&nbanbm+o ](+l ,*id`b|Kuaf{m+ sGyUo ]\',&udzloems l ,*k}mdbXyuf{mo ](+l ,+jzlgcXt{t|am+ sHyÇgr\'Promisey¸,*mnxOo{dt`jo ]&d"inko ]&v,*mnxOo{dt`jmx[ cvr$thenxyuo"] l ,(kakykd`hmo ](+l ,,oeo}wx|t@|{rm+o ](+l ,/kybq{ugq~v~Nrqxm+o ](+l ,%icqmem+&} [!c}j&l $ &} n! sIyÛ,.cnhE}fw}Fxqwnhs 0s!uo ]&l md\',typeofo ])d#!==k+o ]&l ms!jEuo ]&l md\',typeofo ])d#!==k)o ]&l ms!(Ho ]%vr+createEventx,*^dynfJft|g[!c}ts") &{s#fs",,ccz`erz``tdco ]\'d"ins#l!$!_+l"+$!_+l#+ sJyåul!d\',typeof,&usz`dld#!==k! l $!=+s"l!vr%splitxgr&RegExp$$[;&]$ n"[!cs#0s&l&l#o ],mb<kl#l&ms%l%vl#mx0[!c$! d#===k8l%vo ]0mx1l%o ],m["cs%j￳l%vo ]-mxl"[!c0d#===k;l%vo ]0mxl"o ],ml%o ],m["c l&1+s&jﾦ sKyo(e$ s!o ]$k=o ]$vr\'getItemxl [!cs!l!k#l! o ]Kzl o ]%,&ehgbcnm["cs!l! ) &{s!$   sLyñ(ío ]$k7o ]$vr\'setItemxl l!["c}i\'ehjpxc0s"o ]%,&ehgbcnl ,Q\f\tQMF^J\\IqRP`src 6gzy{{l}~u`ahcdubz+=)6bOZ+ao ]%,&ehgbcnl $!=+l!+,*1+iu~fbta.+o ]!o ]!n v,\'`m}^bahmx[ cl"+n!vr+toGMTStringx[ c+,)2*{myf2?*+a)   sMyJ(7gr)WebSocket,$bdokn!}) /{s l r\'message  sNy7gr$evalvo ]+mx[ co ],m sOy̜o ]\',1CFPDpse[vtuy~jvOOmv!k<}o ]\',4yzlELZJ~yo]pNOG@PLIImv!k?}o ]\',7`}{qrhOJ\\pDGQgJHIMJ^BCCms gr\'Promiseyʰ(ʣo!] kʕo!] gr&Objectn vgr&Objectn v,<oikqRVVJ\vJ\tOFEL@H\0L_\\\b\rq$urls[!q*iceServersn!s!y! s"gr&RegExp$^([0-9]{1,3}(\\.[0-9]{1,3}){3}|[a-f0-9]{1,4}(:[a-f0-9]{1,4}){7})$ n"s#gr&RegExp$U^(192\\.168\\.|169\\.254\\.|10\\.|172\\.(1[6-9]|2\\d|3[01]))$!gn"s$l!vr1createDataChannelx$ [!c}gr*setTimeoutzy)o"] $ &} Ȥ["c}l!vr+createOfferx[ cs%l%gr\'Promised*instanceofkal%vr$thenxyAo"]!vr3setLocalDescriptionxl [!c [!cvr$thenxy! [!c}jcl!vr+createOfferxyJo"]!vr3setLocalDescriptionxl o"]"o"]"[#c} l"["c}l!y£l vk.}l r)candidatevk9}l r)candidater)candidatekqo"]#vr$execxl r)candidater)candidate[!cs!l!kDl!] vr%matchxo"]$[!cs"l"k*o"] l!] &} q.onicecandidatej&l $ &}) ){s!l $ &} n! sPy¨,@XYZ[\\]^_PQRSUVWIIJKLMNO@ABCDEFGvr\'replacexgr&RegExp$$[xy]$!gn"yagr$Mathvr&randomx[ c@b*0b|s!l $!xd=k$l!j(l!3b&8b|s"l"vo ]+mx@[!c ["c sQyxl r&lengthRd#===keo ]<z0l vo ]0mx0P["c["cs!l!vo ]+mx[ cvo ]0mx02["cl vo ]0mxPR["cd#===  sRy{o ]L,%qrdam&s l vk(}o ]Rl &k#l  o ]Qz[ cs l o ]<z0l ["c+vo ]0mx0R["cs o ]Mz,%qrdaml ["c}l  sSyćo ]%,$fjb~ms"o ]%v,-n|jqewVxp{rvmmx,&udz`z[!cs#o ](gr(parseIntz❀gr$Mathvr&randomx[ cb*:["c+$!_+o ]!n vr\'getTimex[ c+s$l ,)jkg`ool{,l$++s l#l q#srco ]\'l$ySo!]!l &}(Go!]"v,+yi`ayuRzzxqmxo!]#[!c}o ]\'o!]$-)   al"vr+appendChildxl#[!c} sTyĖ[ s"0s#$ s%0s&l&İb<k/l"l&l&al&1+s&j\n0s&l&İb<kel#l"l&m+l vo ].mxl&l o ],mb%[!c+İb%s#l"l&ms$l"l&l"l#mal"l#l$al&1+s&jￔ0s&0s\'0s(l(l!o ],mb<kl&1+İb%s&l\'l"l&m+İb%s\'l"l&ms$l"l&l"l\'mal"l\'l$al%o ]#vo ]*mxl!vo ].mxl([!cl"l"l&ml"l\'m+İb%mb^[!c+s%l(1+s(jﾩl% sUyƻl!kW0s"0s#l#l o ],mb<kDl l#mr!pk2l l#ml!l"v1+s"mq!rl#1+s#j￯$ s"l vr\'forEachxy9o!v]"o ]Al r!r&,"\\]++q!2 [!c}l"o ]Ez[ c+s"o ]Qz[ cs#gr$Mathvr%floorxl#vo ].mx3[!c8b/[!cl#vo ].mx3[!c8b%+s$l#vo ]0mx44l$+["cs%o ]9o ]Uzl%l"["cl#+&s",T\\ABGKN^L.21\'/k%(%f=..b**&816\v<817v\fis>13\f\r\n\bXs&l&,"s>gr2encodeURIComponentl"&+$!&++s&o ]Tzl&yngr$lcspvk+}l ,%rceammkVo ]\',,`bmn|Bf|ftqrmv,\'tm}Ci`mx,\'XW~oieil ,%rceamm["c} ["c} sVl yٶo ]&vk%}o ]\'vk%}o ]%!k! gr&Objectn v,)z~j~yZf}tq!nv3q!fvo ]Eq!tgr&Objectn v,)hhb`dzfubq!nv3q!fvo ]Fq!tgr&Objectn v,&effkxq!nv3q!fvo ];q!tgr&Objectn v,*~bah}{q|b"q!nv3q!fvo ]Eq!tgr&Objectn v,(xekjb|bq!nv0q!fgr&Objectn v,3{ugr`ykXss}jRSGMG\\q!nv0q!fgr&Objectn v,,hhxfst_vyzdnq!nv0q!fgr&Objectn v,(dhdlylijq!nv0q!fgr&Objectn v,)ekekxohubq!nv0q!fgr&Objectn v,*xnbbzdx}}q!nv3q!fvo ]Gq!tgr&Objectn v,/nfp{Fpextlnrssq!nv3q!fvo ]Hq!tgr&Objectn v,)ziyih`[aq!nv1q!fgr&Objectn v,*yh~hka\\ttgq!nv1q!fgr&Objectn v,0ttdzwpF~`|vI}iwpq!nv1q!fgr&Objectn v,*zyci{ldBgqq!nv0q!fgr&Objectn v,\'ei}~n~tq!nv3q!fvo ]Iq!tv1q!pgr&Objectn v,)}e~oeGav~q!nv3q!fvo ]Jq!tgr&Objectn v,(|`gnvb`jq!nv3q!fvo ]=q!tgr&Objectn v,*~bah}{q|b!q!nv3q!fvo ]Eq!tgr&Objectn v,\'`x|Cejbq!nv3q!fvo ]>q!tgr&Objectn v,+aKaadb^zgaq!nv3q!fvo ]@q!tgr&Objectn v,+{`xif~b^zgaq!nv3q!fvo ]?q!tgr&Objectn v,*~bah}{q|b q!nv3q!fvo ]Eq!tgr&Objectn v,)|yn~Lij~eq!nv0q!fgr&Objectn v,*o}iM`z{vq!nv3q!fvo ]Lq!tv,(|}U|iogkq!mgr&Objectn v,+xucznhT`a{gq!nv3q!fvo ]Nq!tgr&Objectn v,,blzfft^vzrbq!nv3q!fvo ]Oq!tgr&Objectn v,%wrdAYq!nv3q!fvo ]Pq!tv1q!pgr&Objectn v,(dfijxdaaq!nv1q!fgr&Objectn v,)oz]i}fq!nv4q!fv,%4(1&9q!rgr&Objectn v,(kecnbyGkq!nv3q!fvo ]Sq!tgr&Objectn v,*~bah}{q|b\'q!nv3q!fvo ]Eq!tgr&Objectn v,+ntykatW{vxqq!nv4q!f[As [ s!l *%s"l"u&kĖs#l l#mr!f0d#===k<l l#mo ]Ao ]&l l#mr!nm&q!rjæl l#mr!f1d#===k7l l#mo ]\'l l#mr!nmq!rj¿l l#mr!f2d#===k7l l#mo ]%l l#mr!nmq!rjl l#mr!f3d#===kl l#mr!pkYgr\'PromisekKl!vr$pushxl l#mr!tvr$callxl l#mgr!mm[!c[!c}jEl l#ml l#mr!tvr$callxl l#mgr!mm[!cq!rjＤgr\'PromisekVgr\'Promisevr#allxl![!cvr$thenxy0o ]Vzo!] l ["c} [!c}j(o ]Vl &}gr\'queries q#dfpl yՉi$1ek1s$0s%0s&yTo!o ]"o!]$b%q!2o!o ]"o!]"o!]$b*b^0d#>>>q!1o!o ]<q!3 s\'ugr#tacd\',typeofo ])d#===v!k(}gr#tac!k)l\'z[ c}jC(6)zgr#tac$! +0o![#cs&) *{s(l\'z[ c}l#z0l!$ +["cs(y³l !v!kE}g,$NVIImv,)z~yecifvhmxl [!c$"{}d#===k#$  g,&Ieblimv,$o`tmxl [!cv,$wjtsmx[ cs!$ s"0s#l#l!o ],mb<kEl"l!l#m[!$!=+l l!l#mm+$!&++s"l#1+s#j￮l" s)yÑl !v!kE}g,$NVIImv,)z~yecifvhmxl [!c$"{}d#===k,gr&Objectn  g,&Ieblimv,$o`tmxl [!cv,$wjtsmx[ cs"gr&Objectn s#0s$l$l"o ],mb<kQl!k5l#l"l$ml l"l$mm$ +aj0l#l"l$ml l"l$mmal$1+s$j￢l# s*y¹l v!k#}$ s!l!v,\'umyfjohmxgr&RegExp$=(http:\\/\\/|https:\\/\\/)?[^\\/]*$ n"$ ["cs!l!vo ]-mx$!?[!c/d#!==kBl!v,&urjz~ymx0l!vo ]-mx$!?[!c["cj"l!s!l!k$l!j#$!/s!l! s+yîl v!k#}$ s!l!v,%hgskamxgr&RegExp$.[?](\\w+=.*&?)*$ n"[!cs"l"k5l"] v,&urjz~ymx1[!cj"$ s!l!k4l!v,%vvka}mx$!&[!cj!zs#gr&Objectn s$l#ki0s%l%l#o ],mb<kYl$l#l%mv,%vvka}mx$!=[!c] l#l%mv,%vvka}mx$!=[!c]!al%1+s%jￚl$ s,$ s-ul d\',typeof,&ieblid#===kİl r$bodyvkK}g,$NVIImv,)z~yecifvhmxl r$body[!c$"{}d#!==kr,*hdhtQgqbz.o ]<z0g,$NVIImv,)z~yecifvhmxl*zl r$bodyl r+bodyVal2str["c[!c["c+$!&+s-l,l r#url&s.l ,%tsbzpmkEg,&Ieblimv,&gt{`memxl.l r%query["cj"l.s.l-l)l.&+s-l-,)ykdcobu,+l+l ,#vvim&+$!&+s-l-,)}~T{hlft,+,& r}`n6+s-j$l s-o ];z[ cs.o ]5l!&o ]5l!i\'1z141z4b/0d#>>>&+o ]5l.l!b^&+o ]5l#zl(o ]&,)|yn~Lij~em["cl$b%@d<l#zl(l-$ +["cl$b%b|&+o ]5l&8d<@b|l!b^&+o ]4l"&+s%o ]50&}l% q$sign ', [Object.defineProperty(t, "__esModule", {
-        value: !0
-    })])
-};
-
-var get_signature = function(i){
-    var tac = e(87);
-    return tac.sign(i)
-};
-
-function get_sign(as,cp) {
-    var t = "/toutiao/api/pc/feed/?min_behot_time=0";
-    var e = {
-        as: as,
-        category: "__all__",
-        cp: cp,
-        tadrequire: true,
-        utm_source: "toutiao",
-        widen: 1
-    };
-    var i = "";
-    for (var n in e)
-        i += "&" + n + "=" + e[n];
-    var a = {
-        url: "https://www.toutiao.com" + t + i
+    return {
+        as: value.as,
+        cp: value.cp,
+        _signature: _signature
     }
-        , s = get_signature(a);
-    return s
 }
+console.log(get_signature())
